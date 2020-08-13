@@ -4,29 +4,29 @@ NEWSPIDER_MODULE = 'crawl_cp_68.spiders'
 ROBOTSTXT_OBEY = True
 FEED_EXPORT_ENCODING = 'utf-8'
 
-HTTP_PROXY = 'http://10.10.137.43:8118'
-# HTTP_PROXY = 'http://92.244.99.229:3128'
-TOR_HOST = '10.10.137.43'
-TOR_PORT = 9051
-MONGODB_URI = 'mongodb://db:27017'
-ADDRESS_URL_COLLECTION = 'crawler.address.url'
-LOGSTASH_HOST = 'db'
-LOGSTASH_PORT = 5100
-ES_ADDRESS = ['db:9200']
-ES_CLUSTER_ADDRESS = ['hd01:9201', 'hd02:9201', 'hd03:9201']
-KAFKA_ADDRESS = ['hd02:6667', 'hd03:6667']
-KAFKA_TOPIC = 'g_crawl'
+# HTTP_PROXY = 'http://10.10.137.43:8118'
+# # HTTP_PROXY = 'http://92.244.99.229:3128'
+# TOR_HOST = '10.10.137.43'
+# TOR_PORT = 9051
+MONGODB_URI = 'mongodb://admin:admin@localhost:27017'
+# ADDRESS_URL_COLLECTION = 'crawler.address.url'
+# LOGSTASH_HOST = 'db'
+# LOGSTASH_PORT = 5100
+# ES_ADDRESS = ['db:9200']
+# ES_CLUSTER_ADDRESS = ['hd01:9201', 'hd02:9201', 'hd03:9201']
+# KAFKA_ADDRESS = ['hd02:6667', 'hd03:6667']
+# KAFKA_TOPIC = 'g_crawl'
 
 # LOGSTASH_HOST = '192.168.3.160'
 # LOGSTASH_PORT = 5100
 
-MONGODB_DATABASE = 'CRAWLER_COLLECTION'
-BLOOM_FILTER_MAX_SIZE = 100000000
-BLOOM_FILTER_ERROR_RATE = 0.0000001
+MONGODB_DATABASE = 'CRAWLER_CO_PHIEU_68'
+# BLOOM_FILTER_MAX_SIZE = 100000000
+# BLOOM_FILTER_ERROR_RATE = 0.0000001
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-
-ES_CRAWL_INDEX = 'crawl_cp_68'
-ES_CRAWL_TYPE = 'doc'
+#
+# ES_CRAWL_INDEX = 'crawl_cp_68'
+# ES_CRAWL_TYPE = 'doc'
 
 SPIDER_MODULES = [
     'crawl_cp_68.spiders'
@@ -53,11 +53,11 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 ITEM_PIPELINES = {
-    # 'crawl_cp_68.pipelines.MongoDBPipeline': 1,
+    'crawl_cp_68.pipelines.MongoDBPipeline': 1,
     # 'crawl_cp_68`.pipelines.KafkaPipeline': 2
 }
 
-TELE_TOKEN = '1064700978:AAH7mQK8I2RqCcEfLhtFNzUlQORTEf2-gr4'
-TELE_CHAT_ID = '-340499601'
+# TELE_TOKEN = '1064700978:AAH7mQK8I2RqCcEfLhtFNzUlQORTEf2-gr4'
+# TELE_CHAT_ID = '-340499601'
 
-ADDRESS_URL_PATH = 'data/crawler_address_url.json'
+# ADDRESS_URL_PATH = 'data/crawler_address_url.json'

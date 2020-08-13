@@ -1,20 +1,20 @@
 from scrapy.spiders import CrawlSpider
 from scrapy import Request
 from datetime import datetime
+from crawl_cp_68.import_setting import *
 
 class CategoryHomeSpider(CrawlSpider):
     name =  'categoryhome'
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(CategoryHomeSpider,self).__init__(**kwargs)
         self.allowed_domains = ['www.cophieu68.vn']
         self.start_urls = 'http://www.cophieu68.vn/categorylist.php'
-
+        settings['CRAWLER_COLLECTION'] = 'CRAWLER_CATEGORY_HOME'
 
     def start_requests(self):
         yield Request(self.start_urls, callback=self.parse)
 
     def parse(self,response ):
-        lst_obj = []
         root_path = '//*[@id="begin_header"]/table//tr/td/table[2]//tr'
         length_row = len(response.xpath(root_path).extract() )
         for i in range(2,length_row + 1):
@@ -92,8 +92,7 @@ class CategoryHomeSpider(CrawlSpider):
             else:
                 obj['von_tt'] = 0
 
-            lst_obj.append(obj)
-        yield {'list_category': lst_obj}
+            yield obj
 
 
 

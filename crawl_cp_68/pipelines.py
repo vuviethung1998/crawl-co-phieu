@@ -1,27 +1,21 @@
 from pymongo import MongoClient
-
-from elasticsearch import Elasticsearch
-from kafka import KafkaProducer
 from json import dumps
-from a.customize.telegram_notify import GTeleBot
-from a.customize import glog
-from a.import_setting import *
+# from crawl_cp_68.customize.telegram_notify import GTeleBot
+from crawl_cp_68.customize import glog
+from crawl_cp_68.import_setting import *
 
-tele_bot = GTeleBot()
-logger = glog.config_log()
+# tele_bot = GTeleBot()
+# logger = glog.config_log()
 
 
 class MongoDBPipeline(object):
     def __init__(self):
         connection = MongoClient(settings.get('MONGODB_URI'))
         db = connection[settings['MONGODB_DATABASE']]
-        # if 'CRAWLER_COLLECTION' not in settings:
-        #     settings['CRAWLER_COLLECTION'] = 'crawler.batdongsan.com.vn'
         self.collection = db[settings['CRAWLER_COLLECTION']]
 
     def process_item(self, item, spider):
         self.collection.insert(item)
-
         return item
 
 
@@ -37,22 +31,22 @@ class MongoDBPipeline(object):
 #         return item
 
 
-class KafkaPipeline(object):
-    def __init__(self):
-        try:
-            self.producer = KafkaProducer(bootstrap_servers=settings['KAFKA_ADDRESS'],
-                                          value_serializer=lambda x: dumps(x, ensure_ascii=False).encode('utf-8'))
-        except Exception as e:
-            logger.exception('Crawler kafka exception ' + str(e))
-            tele_bot.send_message('Crawler kafka not access')
-
-    def process_item(self, item, spider):
-        try:
-            item['_id'] = {'oid': str(item['_id'])}
-            item.pop('timestampISODate')
-            self.producer.send(settings['KAFKA_TOPIC'], value=item)
-            # print(item)
-            return item
-        except Exception as e:
-            logger.exception('Crawler url kafka exception ' + str(e))
-            tele_bot.send_message('Crawler url kafka exception ' + item.get('url'))
+# class KafkaPipeline(object):
+#     def __init__(self):
+#         try:
+#             self.producer = KafkaProducer(bootstrap_servers=settings['KAFKA_ADDRESS'],
+#                                           value_serializer=lambda x: dumps(x, ensure_ascii=False).encode('utf-8'))
+#         except Exception as e:
+#             logger.exception('Crawler kafka exception ' + str(e))
+#             tele_bot.send_message('Crawler kafka not access')
+#
+#     def process_item(self, item, spider):
+#         try:
+#             item['_id'] = {'oid': str(item['_id'])}
+#             item.pop('timestampISODate')
+#             self.producer.send(settings['KAFKA_TOPIC'], value=item)
+#             # print(item)
+#             return item
+#         except Exception as e:
+#             logger.exception('Crawler url kafka exception ' + str(e))
+#             tele_bot.send_message('Crawler url kafka exception ' + item.get('url'))
