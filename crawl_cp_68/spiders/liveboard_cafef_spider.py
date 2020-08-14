@@ -4,7 +4,7 @@ from datetime import datetime
 from crawl_cp_68.config.ListStock import *
 
 class LiveCafefSpider(CrawlSpider):
-    name = 'liveboard_cafef'
+    name = "liveboard_cafef"
     def __init__(self, **kwargs):
         super(LiveCafefSpider, self).__init__(**kwargs)
         self.allowed_domains = ['cafef.vn']
@@ -30,7 +30,7 @@ class LiveCafefSpider(CrawlSpider):
         for cp in lst_cp:
             obj ={}
             now = datetime.now()
-            obj['cur_date'] = now.strftime("%d/%m/%Y %H:%M:%S")
+            obj['timestamp'] = now.strftime("%d/%m/%Y %H:%M:%S")
 
             # ----------------------------
             ma_ck = response.xpath('//*[@id="{}_a"]/label/text()'.format(cp)).extract()
@@ -99,62 +99,75 @@ class LiveCafefSpider(CrawlSpider):
             else:
                 print("error")
             # ----------------------------
-            gia = response.xpath('//*[@id="{}_k"]/text()'.format(cp)).extract()
+            gia = response.xpath('//*[@id="{}_l"]/text()'.format(cp)).extract()
             if len(gia) > 0:
                 obj['gia'] = gia[0]
             else:
                 print("error")
             # ----------------------------
-            khoi_luong = response.xpath('//*[@id="{}_l"]/text()'.format(cp)).extract()
+            khoi_luong = response.xpath('//*[@id="{}_m"]/text()'.format(cp)).extract()
             if len(khoi_luong) > 0:
                 obj['khoi_luong'] = khoi_luong[0]
             else:
                 print("error")
             # ----------------------------
-            tong_kl = response.xpath('//*[@id="{}_m"]/text()'.format(cp)).extract()
+            tong_kl = response.xpath('//*[@id="{}_n"]/text()'.format(cp)).extract()
             if len(tong_kl) > 0:
                 obj['tong_kl'] = tong_kl[0]
             else:
                 print("error")
             # ----------------------------
-            gia_1_sell = response.xpath('//*[@id="{}_n"]/text()'.format(cp)).extract()
+            gia_1_sell = response.xpath('//*[@id="{}_o"]/text()'.format(cp)).extract()
             if len(gia_1_sell) > 0:
                 obj['gia_1_sell'] = gia_1_sell[0]
             else:
                 print("error")
             # ----------------------------
-            kl_1_sell = response.xpath('//*[@id="{}_o"]/text()'.format(cp)).extract()
+            kl_1_sell = response.xpath('//*[@id="{}_p"]/text()'.format(cp)).extract()
             if len(kl_1_sell) > 0:
                 obj['kl_1_sell'] = kl_1_sell[0]
             else:
                 print("error")
             # ----------------------------
-            tong_kl = response.xpath('//*[@id="{}_p"]/text()'.format(cp)).extract()
-            if len(tong_kl) > 0:
-                obj['tong_kl'] = tong_kl[0]
+            gia_2_sell = response.xpath('//*[@id="{}_q"]/text()'.format(cp)).extract()
+            if len(gia_2_sell) > 0:
+                obj['gia_2_sell'] = gia_2_sell[0]
             else:
                 print("error")
             # ----------------------------
-            tong_kl = response.xpath('//*[@id="{}_m"]/text()'.format(cp)).extract()
-            if len(tong_kl) > 0:
-                obj['tong_kl'] = tong_kl[0]
+            kl_2_sell = response.xpath('//*[@id="{}_r"]/text()'.format(cp)).extract()
+            if len(kl_2_sell) > 0:
+                obj['kl_2_sell'] = kl_2_sell[0]
             else:
                 print("error")
             # ----------------------------
-            tong_kl = response.xpath('//*[@id="{}_m"]/text()'.format(cp)).extract()
-            if len(tong_kl) > 0:
-                obj['tong_kl'] = tong_kl[0]
+            gia_3_sell = response.xpath('//*[@id="{}_s"]/text()'.format(cp)).extract()
+            if len(gia_3_sell) > 0:
+                obj['gia_3_sell'] = gia_3_sell[0]
             else:
                 print("error")
             # ----------------------------
-            tong_kl = response.xpath('//*[@id="{}_m"]/text()'.format(cp)).extract()
-            if len(tong_kl) > 0:
-                obj['tong_kl'] = tong_kl[0]
+            kl_3_sell = response.xpath('//*[@id="{}_t"]/text()'.format(cp)).extract()
+            if len(kl_3_sell) > 0:
+                obj['kl_3_sell'] = kl_3_sell[0]
             else:
                 print("error")
             # ----------------------------
-            tong_kl = response.xpath('//*[@id="{}_m"]/text()'.format(cp)).extract()
+            gia_cao = response.xpath('//*[@id="{}_v"]/text()'.format(cp)).extract()
+            if len(gia_cao) > 0:
+                obj['gia_cao'] = gia_cao[0]
+            else:
+                print("error")
+            # ----------------------------
+            gia_thap = response.xpath('//*[@id="{}_w"]/text()'.format(cp)).extract()
+            if len(gia_thap) > 0:
+                obj['gia_thap'] = gia_thap[0]
+            else:
+                print("error")
+            # ----------------------------
+            dtnn_mua = response.xpath('//*[@id="{}_x"]/text()'.format(cp)).extract()
             if len(tong_kl) > 0:
                 obj['tong_kl'] = tong_kl[0]
             else:
                 print("error")
+        yield  obj

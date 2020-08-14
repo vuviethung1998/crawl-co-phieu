@@ -30,7 +30,7 @@ DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 SPLASH_URL = 'http://127.0.0.1:8050'
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
-COOKIES_ENABLED = True # Nếu cần dùng Cookie
+COOKIES_ENABLED = True
 SPLASH_COOKIES_DEBUG = False
 
 
