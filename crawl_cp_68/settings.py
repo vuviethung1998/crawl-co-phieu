@@ -24,9 +24,15 @@ MONGODB_DATABASE = 'CRAWLER_CO_PHIEU_68'
 # BLOOM_FILTER_MAX_SIZE = 100000000
 # BLOOM_FILTER_ERROR_RATE = 0.0000001
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-#
 # ES_CRAWL_INDEX = 'crawl_cp_68'
 # ES_CRAWL_TYPE = 'doc'
+
+SPLASH_URL = 'http://127.0.0.1:8050'
+DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+COOKIES_ENABLED = True # Nếu cần dùng Cookie
+SPLASH_COOKIES_DEBUG = False
+
 
 SPIDER_MODULES = [
     'crawl_cp_68.spiders'
@@ -45,11 +51,14 @@ USER_AGENT_LIST = [
     'Chrome/<Chrome Rev> Safari/<WebKit Rev> Edge/<ECRAWLER_COLLECTIONdgeHTML Rev>.<Windows Build>',
 ]
 
+SPIDER_MIDDLEWARES = {
+    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+}
 DOWNLOADER_MIDDLEWARES = {
-    # 'crawl_cp_68.middlewares.DuplicateFilterMiddleware': 100,
-    # 'crawl_cp_68.middlewares.RandomUserAgentMiddleware': 200,
-    # 'crawl_cp_68.middlewares.ProxyMiddleware': 300,
-    # 'crawl_cp_68.middlewares.RetryMiddleware': 400,
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 400,
 }
 
 ITEM_PIPELINES = {

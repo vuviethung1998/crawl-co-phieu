@@ -1,18 +1,13 @@
 from pymongo import MongoClient
-from json import dumps
 # from crawl_cp_68.customize.telegram_notify import GTeleBot
-from crawl_cp_68.customize import glog
 from crawl_cp_68.import_setting import *
-
-# tele_bot = GTeleBot()
-# logger = glog.config_log()
-
 
 class MongoDBPipeline(object):
     def __init__(self):
         connection = MongoClient(settings.get('MONGODB_URI'))
         db = connection[settings['MONGODB_DATABASE']]
-        self.collection = db[settings['CRAWLER_COLLECTION']]
+        # self.collection = db[settings['CRAWLER_COLLECTION']]
+        self.collection = db.database[settings['CRAWLER_COLLECTION']]
 
     def process_item(self, item, spider):
         self.collection.insert(item)
