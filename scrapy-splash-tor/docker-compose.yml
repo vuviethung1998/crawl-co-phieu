@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    tor-privoxy:
+        image: rdsubhas/tor-privoxy-alpine
+        volumes:
+            - ./privoxy:/etc/privoxy:ro
+    splash:
+        image: scrapinghub/splash
+        volumes:
+            - ./splash/proxy-profiles:/etc/splash/proxy-profiles:ro
+        ports: 
+            - 8050:8050
+        links:
+            - tor-privoxy
