@@ -4,6 +4,7 @@ from datetime import datetime, date
 import time
 from crawl_cp_cafef.config.ListStock import *
 from crawl_cp_cafef.import_setting import *
+from crawl_cp_cafef.checkpoint.job.update_file import *
 
 ind = 0 #  global variables  
 
@@ -20,12 +21,13 @@ class CafefLichSuGiaoDich(CrawlSpider):
         # str_date = str(date.today().strftime("%d-%m-%y"))
         settings['CRAWLER_COLLECTION'] = 'TRADING_HISTORY_DAILY'
 
-        self.script = self.get_script()
-
-
-    def get_script(self):
-        global ind 
-        ind += 1 
+    def get_script(self, stock_name):
+        import os
+        stock_file = os.getcwd() + "/crawl_cp_cafef/checkpoint/{}.txt".format(stock_name)
+        ind = int(readFile(stock_file))
+        ind += 1
+        print("IND:" + str(ind))
+        updateFile(stock_file, str(ind))
         script = """
             function main(splash, args)
             assert(splash:go(args.url))
@@ -37,6 +39,7 @@ class CafefLichSuGiaoDich(CrawlSpider):
             }}
             end
             """
+        print("script:" + script.format(ind = ind) )
         return script.format(ind = ind)
 
     def start_requests(self):
@@ -47,9 +50,11 @@ class CafefLichSuGiaoDich(CrawlSpider):
             )
 
     def parse(self, response):
-        # bang co mac dinh 20 dong 
-
+        # bang co mac dinh 20 dong
         # voi dong le thi _itemTR / dong chan thi _Tr1
+        url = response.url
+        stock_name = url.split('-')[4]
+        print('Stock' + stock_name)
 
         for i in range(1,21):
             obj = {}
@@ -70,7 +75,7 @@ class CafefLichSuGiaoDich(CrawlSpider):
 
             date =  root_xpath + '/td[1]/text()'
             obj['date'] = response.xpath(date).extract()[0]
-            
+
             price = root_xpath + '/td[2]/text()'
             obj['price'] = response.xpath(price).extract()[0]
 
@@ -89,7 +94,7 @@ class CafefLichSuGiaoDich(CrawlSpider):
             so_lenh_ban = root_xpath + '/td[6]/text()'
             obj['so_lenh_ban'] = response.xpath(so_lenh_ban).extract()[0]
 
-            khoi_luong_ban = root_xpath + '/td[7]/text()' 
+            khoi_luong_ban = root_xpath + '/td[7]/text()'
             obj['khoi_luong_ban'] = response.xpath(khoi_luong_ban).extract()[0]
 
             khoi_luong_trung_binh_tren_ban = root_xpath + '/td[8]/text()'
@@ -100,18 +105,13 @@ class CafefLichSuGiaoDich(CrawlSpider):
 
             yield obj
         print("---------------------------------------")
-        print(self.script)
+        print(self.get_script(stock_name))
         print("---------------------------------------")
 
         yield  SplashRequest(
             url=response.url,
             callback=self.parse,
             meta={
-                "splash": {"endpoint": "execute", "args": {"lua_source": self.script}}
+                "splash": {"endpoint": "execute", "args": {"lua_source": self.get_script(stock_name)}}
             }
         )
-
-
-
-
-        
