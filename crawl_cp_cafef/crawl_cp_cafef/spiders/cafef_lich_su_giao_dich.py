@@ -21,32 +21,27 @@ class CafefLichSuGiaoDich(CrawlSpider):
         # str_date = str(date.today().strftime("%d-%m-%y"))
         settings['CRAWLER_COLLECTION'] = 'TRADING_HISTORY_DAILY'
 
-    def get_script(self, stock_name):
-        import os
-        stock_file = os.getcwd() + "/crawl_cp_cafef/checkpoint/{}.txt".format(stock_name)
-        ind = int(readFile(stock_file))
-        ind += 1
-        print("IND:" + str(ind))
-        updateFile(stock_file, str(ind))
+    def get_script(self, page_number):
         script = """
             function main(splash, args)
             assert(splash:go(args.url))
             assert(splash:wait(1))
-            assert(splash:runjs("__doPostBack('ctl00$ContentPlaceHolder1$ctl03$pager1', '{ind}')"))
+            assert(splash:runjs("__doPostBack('ctl00$ContentPlaceHolder1$ctl03$pager1', '{ind}');"))
             return {{
                 html = splash:html(),
                 url = splash:url()
             }}
             end
             """
-        print("script:" + script.format(ind = ind) )
-        return script.format(ind = ind)
+        print("script:" + script.format(ind = page_number) )
+        return script.format(ind = page_number)
 
     def start_requests(self):
         for url in self.start_urls:
             yield SplashRequest(url, 
                 callback=self.parse,
-                endpoint='render.html'
+                endpoint='render.html',
+                meta={'page_number': 1}
             )
 
     def parse(self, response):
@@ -54,8 +49,6 @@ class CafefLichSuGiaoDich(CrawlSpider):
         # voi dong le thi _itemTR / dong chan thi _Tr1
         url = response.url
         stock_name = url.split('-')[4]
-        print('Stock' + stock_name)
-
         for i in range(1,21):
             obj = {}
             #  neu < 10 thi them 0 vao truoc string
@@ -65,13 +58,15 @@ class CafefLichSuGiaoDich(CrawlSpider):
                 num_present = '0' + str(i)
             else:
                 num_present = str(i)
-            #  root 
+            #  root
             if i % 2 == 1:
                 rand_name = 'itemTR'
             else:
                 rand_name = 'Tr1'
-            
+
             root_xpath = '//*[@id="ctl00_ContentPlaceHolder1_ctl03_rptData_ctl{}_{}"]'.format(num_present, rand_name)
+
+            obj['stock_name'] = stock_name
 
             date =  root_xpath + '/td[1]/text()'
             obj['date'] = response.xpath(date).extract()[0]
@@ -102,16 +97,19 @@ class CafefLichSuGiaoDich(CrawlSpider):
 
             chenh_lech_khoi_luong_mua_ban =  root_xpath + '/td[9]/text()'
             obj['chenh_lech_khoi_luong_mua_ban'] = response.xpath(chenh_lech_khoi_luong_mua_ban).extract()[0]
-
+            print("Obj" + str(obj))
             yield obj
-        print("---------------------------------------")
-        print(self.get_script(stock_name))
-        print("---------------------------------------")
 
-        yield  SplashRequest(
-            url=response.url,
-            callback=self.parse,
-            meta={
-                "splash": {"endpoint": "execute", "args": {"lua_source": self.get_script(stock_name)}}
-            }
-        )
+        page_number = response.meta['page_number']
+        next_page_number = page_number + 1
+
+        # stop crawling if page > 100
+        if next_page_number <= 100:
+            yield  SplashRequest(
+                url=response.url,
+                callback=self.parse,
+                meta={
+                    "splash": {"endpoint": "execute", "args": {"lua_source": self.get_script(page_number)}},
+                    "page_number": next_page_number
+                }
+            )
