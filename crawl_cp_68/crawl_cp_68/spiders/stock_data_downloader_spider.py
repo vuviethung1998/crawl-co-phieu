@@ -20,29 +20,23 @@ class StockDataDownloaderSpider(CrawlSpider):
         settings['CRAWLER_COLLECTION'] = 'CRAWLER_CATEGORY_DETAIL_{}'.format(str_date)
 
     def start_requests(self):
-        url = 'https://www.cophieu68.vn/account/login.php'
+        url = 'http://www.cophieu68.vn/account/login.php'
         formdata = {
             'username': 'vuviethung.98.hust@gmail.com',
             'tpassword': 'vuviethung',
             'ajax': '1',
             'login': '1'
         }
-        yield FormRequest(url=url, formdata=formdata, callback=self.after_login)
+        yield FormRequest(url=url,  formdata=formdata,callback=self.parse)
 
-    def after_login(self):
-        for url in self.start_urls:
-            yield Request(
-                url=url,
-                callback=self.parse
-            )
 
     def parse(self,response):
-        url = response.url
-        stock_name = url.split("=")[1]
-        file_dir = os.getcwd() + "/crawl_cp_68/data/lich_su_giao_dich/{}.txt".format(stock_name)
+        file_dir = os.getcwd() + "/crawl_cp_68/data/lich_su_giao_dich/{}.txt".format('TVC')
         print("FILE-DIR: "  + file_dir)
         with open(file_dir, 'wb') as f:
             print("---------------------")
             print(response.body)
             f.write(response.body)
+
+    # def after_login(self,response):
 

@@ -4,7 +4,7 @@ from datetime import datetime, date
 import time
 from crawl_cp_cafef.config.ListStock import *
 from crawl_cp_cafef.import_setting import *
-from crawl_cp_cafef.checkpoint.job.update_file import *
+# from crawl_cp_cafef.checkpoint.job.update_file import *
 
 ind = 0 #  global variables  
 
@@ -49,6 +49,7 @@ class CafefLichSuGiaoDich(CrawlSpider):
         # voi dong le thi _itemTR / dong chan thi _Tr1
         url = response.url
         stock_name = url.split('-')[4]
+
         for i in range(1,21):
             obj = {}
             #  neu < 10 thi them 0 vao truoc string

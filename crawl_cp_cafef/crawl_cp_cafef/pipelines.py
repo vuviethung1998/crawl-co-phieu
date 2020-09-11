@@ -7,7 +7,6 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 
-
 from pymongo import MongoClient
 # from crawl_cp_68.customize.telegram_notify import GTeleBot
 from crawl_cp_cafef.import_setting import *

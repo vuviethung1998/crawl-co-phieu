@@ -11,9 +11,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f04fb-cb2e-41e2-8bcd-afc069b91e7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/config/ListStock.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/import_setting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/items.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/middlewares.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/pipelines.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/scrapy.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/crawl-co-phieu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crawl-co-phieu.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/checkpoint/TVC.txt" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/checkpoint/TVC.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_68/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_68/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_68/crawl_cp_68/data/lich_su_giao_dich/TVC.txt" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_68/crawl_cp_68/data/lich_su_giao_dich/TVC.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_68/crawl_cp_68/spiders/stock_data_downloader_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_68/crawl_cp_68/spiders/stock_data_downloader_spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_68/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/checkpoint/TVC.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/pipelines.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_giao_dich.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_giao_dich.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,18 +70,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/crawl_cp_68" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/crawl_cp_finance_stock" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock" />
+      <recent name="$PROJECT_DIR$/crawl_cp_cafef" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/crawl_cp_68/config" />
       <recent name="$PROJECT_DIR$/crawl_cp_68" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Python.liveboard_cafef_spider">
@@ -121,53 +147,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="crawl-co-phieu" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="crawl-co-phieu" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="crawl-co-phieu" />
@@ -288,19 +267,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3b1f04fb-cb2e-41e2-8bcd-afc069b91e7c" name="Default Changelist" comment="" />
@@ -319,28 +286,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="67" y="27" width="1299" height="741" key="#Project_Structure" timestamp="1598496240349">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state x="199" y="27" width="1299" height="741" key="#Project_Structure" timestamp="1599235009647">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="199" y="27" width="1024" height="741" key="#Project_Structure/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597420067035" />
+    <state x="199" y="27" width="1024" height="741" key="#Project_Structure/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1599235009647" />
     <state x="67" y="27" width="1299" height="741" key="#Project_Structure/67.27.2323.741@67.27.2323.741" timestamp="1598496240349" />
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598926203021">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1598926203021" />
-    <state x="480" y="155" width="495" height="513" key="FileChooserDialogImpl" timestamp="1598499008191">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state x="500" y="155" width="495" height="513" key="FileChooserDialogImpl" timestamp="1599235552355">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="500" y="155" width="495" height="484" key="FileChooserDialogImpl/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1598029549308" />
+    <state x="500" y="155" width="495" height="484" key="FileChooserDialogImpl/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1599235552355" />
     <state x="480" y="155" width="495" height="513" key="FileChooserDialogImpl/67.27.2323.741@67.27.2323.741" timestamp="1598499008191" />
     <state width="1276" height="175" key="GridCell.Tab.0.bottom" timestamp="1598499009223">
       <screen x="67" y="27" width="2323" height="741" />
@@ -378,10 +344,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.1.right/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071772" />
-    <state x="482" y="206" width="1022" height="845" key="SettingsEditor" timestamp="1598926373192">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="204" y="27" width="1022" height="845" key="SettingsEditor" timestamp="1599235546964">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="204" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597420057661" />
+    <state x="204" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1599235546964" />
     <state x="482" y="206" width="1022" height="845" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1598926373192" />
     <state x="67" y="27" width="1299" height="741" key="SettingsEditor/67.27.2323.741@67.27.2323.741" timestamp="1598497702731" />
     <state x="181" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1598925248274">
