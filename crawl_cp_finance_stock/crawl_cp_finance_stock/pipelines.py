@@ -17,9 +17,10 @@ class MongoDBPipeline(object):
         connection = MongoClient(settings.get('MONGODB_URI'))
         db = connection[settings['MONGODB_DATABASE']]
 
-        self.collection = {}
-        for collection_name in settings['CRAWLER_COLLECTION']:
-            self.collection[collection_name] = db[collection_name]
+        # self.collection = {}
+        # for collection_name in settings['CRAWLER_COLLECTION']:
+        #     self.collection[collection_name] = db[collection_name]
+        self.collection = db.database[settings['CRAWLER_COLLECTION']]
 
     def process_item(self, item, spider):
         valid = True
@@ -31,5 +32,12 @@ class MongoDBPipeline(object):
             self.collection[item['Chung_khoan_name']].insert(dict(item))
 
         return item
+
+if __name__=="__main__":
+    connection = MongoClient(settings["MONGODB_URI"])
+    db = connection[settings["MONGODB_DATABASE"]]
+    test = db["AAA"].find({})
+    for x in test:
+        print(x)
 
 
