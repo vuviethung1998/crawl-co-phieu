@@ -4,10 +4,14 @@ NEWSPIDER_MODULE = 'crawl_cp_68.spiders'
 ROBOTSTXT_OBEY = True
 FEED_EXPORT_ENCODING = 'utf-8'
 
-# HTTP_PROXY = 'http://10.10.137.43:8118'
-# # HTTP_PROXY = 'http://92.244.99.229:3128'
-# TOR_HOST = '10.10.137.43'
-# TOR_PORT = 9051
+TOR_HOST = '127.0.0.1'
+TOR_PORT = 9050
+MONGODB_URI = 'mongodb://admin:admin@localhost:27017'
+
+# proxy for polipo
+# HTTP_PROXY = 'http://127.0.0.1:8123'
+# proxy for privoxy
+HTTP_PROXY = 'http://127.0.0.1:8118'
 MONGODB_URI = 'mongodb://admin:admin@localhost:27017'
 # ADDRESS_URL_COLLECTION = 'crawler.address.url'
 # LOGSTASH_HOST = 'db'
@@ -54,11 +58,14 @@ USER_AGENT_LIST = [
 SPIDER_MIDDLEWARES = {
     # 'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
 }
+
 DOWNLOADER_MIDDLEWARES = {
     # 'scrapy_splash.SplashCookiesMiddleware': 723,
     # 'scrapy_splash.SplashMiddleware': 725,
     # 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
-    # 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 400,
+    'crawl_cp_68.middlewares.RandomUserAgentMiddleware': 100,
+    'crawl_cp_68.middlewares.ProxyMiddleware': 200,
+    'crawl_cp_68.middlewares.RetryMiddleware': 820
 }
 
 ITEM_PIPELINES = {

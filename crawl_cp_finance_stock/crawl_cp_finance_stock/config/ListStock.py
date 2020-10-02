@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 HOSE = [ 'FPT', 'VIC']
+=======
+HOSE = [ 'FPT']
+>>>>>>> 92648fbf543750d5681d8a7848f8e94cda82f301
 HNX = []
 
 # HOSE = ['AAA',
