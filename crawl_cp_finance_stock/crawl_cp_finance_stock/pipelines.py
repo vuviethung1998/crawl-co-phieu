@@ -20,6 +20,7 @@ class MongoDBPipeline(object):
         # self.collection = {}
         # for collection_name in settings['CRAWLER_COLLECTION']:
         #     self.collection[collection_name] = db[collection_name]
+        # self.collection = db.database[settings['CRAWLER_COLLECTION']]
         self.collection = db.database[settings['CRAWLER_COLLECTION']]
 
     def process_item(self, item, spider):
@@ -29,7 +30,8 @@ class MongoDBPipeline(object):
                 valid = False
                 raise DropItem("Missing {0}!".format(data))
         if valid:
-            self.collection[item['Chung_khoan_name']].insert(dict(item))
+            # self.collection[item['Chung_khoan_name']].insert(dict(item))
+            self.collection.insert(dict(item))
 
         return item
 

@@ -11,10 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f04fb-cb2e-41e2-8bcd-afc069b91e7c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_nhom_nganh_spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/crawl-co-phieu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crawl-co-phieu.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hnx.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hose.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/pipelines.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -273,10 +274,11 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="199" y="27" width="1299" height="741" key="#Project_Structure" timestamp="1599235009647">
+    <state x="67" y="27" width="1024" height="741" key="#Project_Structure" timestamp="1601541935737">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="199" y="27" width="1024" height="741" key="#Project_Structure/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1599235009647" />
+    <state x="67" y="27" width="1024" height="741" key="#Project_Structure/67.27.1299.741@67.27.1299.741" timestamp="1601541935737" />
     <state x="67" y="27" width="1299" height="741" key="#Project_Structure/67.27.2323.741@67.27.2323.741" timestamp="1598496240349" />
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598926203021">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -323,24 +325,27 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.1.right/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071772" />
-    <state x="204" y="27" width="1022" height="845" key="SettingsEditor" timestamp="1599235546964">
+    <state x="204" y="27" width="1022" height="741" key="SettingsEditor" timestamp="1601541852939">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="204" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1599235546964" />
+    <state x="204" y="27" width="1022" height="741" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1601541852939" />
     <state x="482" y="206" width="1022" height="845" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1598926373192" />
     <state x="67" y="27" width="1299" height="741" key="SettingsEditor/67.27.2323.741@67.27.2323.741" timestamp="1598497702731" />
     <state x="181" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1598925248274">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="181" y="381" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1598925248274" />
-    <state x="330" y="46" width="762" height="700" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598497550224">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state x="214" y="46" width="762" height="700" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601549688818">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
+    <state x="214" y="46" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.1299.741@67.27.1299.741" timestamp="1601549688818" />
     <state x="330" y="46" width="762" height="700" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.2323.741@67.27.2323.741" timestamp="1598497550224" />
-    <state x="675" y="135" width="1106" height="522" key="find.popup" timestamp="1598498564476">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state x="407" y="135" width="861" height="522" key="find.popup" timestamp="1601632181274">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="407" y="135" width="618" height="522" key="find.popup/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597231282968" />
+    <state x="407" y="135" width="861" height="522" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1601632181274" />
     <state x="675" y="135" width="1106" height="522" key="find.popup/67.27.2323.741@67.27.2323.741" timestamp="1598498564476" />
     <state x="625" y="89" width="1202" height="678" key="search.everywhere.popup" timestamp="1598497871028">
       <screen x="67" y="27" width="2323" height="741" />
