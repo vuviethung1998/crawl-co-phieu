@@ -40,7 +40,7 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
                                 callback= self.parse_bao_cao,
                                 formdata={
                                    "Code": self.lst_cp[ck_index],
-                                   "ReportType":"BCTT",
+                                   "ReportType":"LCTT",
                                    "ReportTermType": "2",
                                    "Unit": "1000000",
                                    "Page": str(page_number),

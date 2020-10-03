@@ -164,7 +164,7 @@ class FinanceStockChiSoTaiChinhSpider(CrawlSpider):
                                       callback= self.parse_bao_cao,
                                       formdata={
                                           "Code": self.lst_cp[ck_index+1],
-                                          "ReportType":"BCTT",
+                                          "ReportType":"CDKT",
                                           "ReportTermType": "1",
                                           "Unit": "1000000",
                                           "Page": "1",
