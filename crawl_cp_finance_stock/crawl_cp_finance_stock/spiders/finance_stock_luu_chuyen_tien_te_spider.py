@@ -15,7 +15,7 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
         self.lst_cp =  HOSE + HNX
 
         self.start_urls = ['https://finance.vietstock.vn']
-        settings['CRAWLER_COLLECTION'] = [cp for cp in self.lst_cp]
+        settings['CRAWLER_COLLECTION'] = "LUU_CHUYEN_TIEN_TE"
 
     def start_requests(self):
         for url in self.start_urls:
@@ -41,7 +41,7 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
                                 formdata={
                                    "Code": self.lst_cp[ck_index],
                                    "ReportType":"LCTT",
-                                   "ReportTermType": "2",
+                                   "ReportTermType": "1",
                                    "Unit": "1000000",
                                    "Page": str(page_number),
                                    "PageSize": "1"
@@ -72,7 +72,7 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
         verifyToken = response.meta["verifyToken"]
 
         thong_tin = json.loads(response.body)[0]
-        bao_cao_tai_chinh = json.loads(response.body)[1]
+        luu_chuyen_tien_te = json.loads(response.body)[1]
 
         for i in range(0,4):
             try:
@@ -81,37 +81,19 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
                 obj["Quarter"] = thong_tin[i]["TermCode"]
                 obj["Year"] = thong_tin[i]["YearPeriod"]
                 obj["ID_Chung_khoan"] = thong_tin[i]["CompanyID"]
-                obj["Doanh thu thuần về bán hàng và cung cấp dịch vụ"] = bao_cao_tai_chinh["Kết quả kinh doanh"][0]["Value{}".format(str(4-i))]
-                obj["Lợi nhuận gộp về bán hàng và cung cấp dịch vụ"] = bao_cao_tai_chinh["Kết quả kinh doanh"][2]["Value{}".format(str(4-i))]
-                obj["Lợi nhuận thuần từ hoạt động kinh doanh"] = bao_cao_tai_chinh["Kết quả kinh doanh"][7]["Value{}".format(str(4-i))]
-                obj["Tổng lợi nhuận kế toán trước thuế"] = bao_cao_tai_chinh["Kết quả kinh doanh"][10]["Value{}".format(str(4-i))]
-                obj["Lợi nhuận sau thuế thu nhập doanh nghiệp"] = bao_cao_tai_chinh["Kết quả kinh doanh"][11]["Value{}".format(str(4-i))]
-                obj["Lợi nhuận sau thuế của cổ đông Công ty mẹ"] =  bao_cao_tai_chinh["Kết quả kinh doanh"][12]["Value{}".format(str(4-i))]
-                obj["Tài sản ngắn hạn"] = bao_cao_tai_chinh["Cân đối kế toán"][0]["Value{}".format(str(4-i))]
-                obj["Hàng tồn kho"] = bao_cao_tai_chinh["Cân đối kế toán"][4]["Value{}".format(str(4-i))]
-                obj["Tài sản dài hạn"] = bao_cao_tai_chinh["Cân đối kế toán"][6]["Value{}".format(str(4-i))]
-                obj["Tài sản cố định"] = bao_cao_tai_chinh["Cân đối kế toán"][7]["Value{}".format(str(4-i))]
-                obj["Bất động sản đầu tư"] = bao_cao_tai_chinh["Cân đối kế toán"][8]["Value{}".format(str(4-i))]
-                obj["Các khoản đầu tư tài chính dài hạn"] = bao_cao_tai_chinh["Cân đối kế toán"][9]["Value{}".format(str(4-i))]
-                obj["Tổng cộng tài sản"] = bao_cao_tai_chinh["Cân đối kế toán"][10]["Value{}".format(str(4-i))]
-                obj["Nợ phải trả"] = bao_cao_tai_chinh["Cân đối kế toán"][11]["Value{}".format(str(4-i))]
-                obj["Vốn chủ sở hữu"] = bao_cao_tai_chinh["Cân đối kế toán"][14]["Value{}".format(str(4-i))]
-                obj["Vốn đầu tư của chủ sở hữu"] = bao_cao_tai_chinh["Cân đối kế toán"][15]["Value{}".format(str(4-i))]
-                obj["Thặng dư vốn cổ phần"] =  bao_cao_tai_chinh["Cân đối kế toán"][16]["Value{}".format(str(4-i))]
-                obj["Lợi nhuận sau thuế chưa phân phối"] = bao_cao_tai_chinh["Cân đối kế toán"][17]["Value{}".format(str(4-i))]
-                obj["Tổng cộng nguồn vốn"] =  bao_cao_tai_chinh["Cân đối kế toán"][19]["Value{}".format(str(4-i))]
-                obj["Thu nhập trên mỗi cổ phần của 4 quý gần nhất (EPS)"] = bao_cao_tai_chinh["Chỉ số tài chính"][0]["Value{}".format(str(4-i))]
-                obj["Giá trị sổ sách của cổ phiếu (BVPS)"] =  bao_cao_tai_chinh["Chỉ số tài chính"][1]["Value{}".format(str(4-i))]
-                obj["Chỉ số giá thị trường trên thu nhập (P/E)"] = bao_cao_tai_chinh["Chỉ số tài chính"][2]["Value{}".format(str(4-i))]
-                obj["Chỉ số giá thị trường trên giá trị sổ sách (P/B)"] = bao_cao_tai_chinh["Chỉ số tài chính"][3]["Value{}".format(str(4-i))]
-                obj["Tỷ suất lợi nhuận gộp biên"] = bao_cao_tai_chinh["Chỉ số tài chính"][4]["Value{}".format(str(4-i))]
-                obj["Tỷ suất sinh lợi trên doanh thu thuần"] = bao_cao_tai_chinh["Chỉ số tài chính"][5]["Value{}".format(str(4-i))]
-                obj["Tỷ suất lợi nhuận trên vốn chủ sở hữu bình quân (ROEA)"] = bao_cao_tai_chinh["Chỉ số tài chính"][6]["Value{}".format(str(4-i))]
-                obj["Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA)"] = bao_cao_tai_chinh["Chỉ số tài chính"][7]["Value{}".format(str(4-i))]
-                obj["Tỷ số thanh toán hiện hành (ngắn hạn)"] = bao_cao_tai_chinh["Chỉ số tài chính"][8]["Value{}".format(str(4-i))]
-                obj["Khả năng thanh toán lãi vay"] = bao_cao_tai_chinh["Chỉ số tài chính"][9]["Value{}".format(str(4-i))]
-                obj["Tỷ số Nợ trên Tổng tài sản"] = bao_cao_tai_chinh["Chỉ số tài chính"][10]["Value{}".format(str(4-i))]
-                obj["Tỷ số Nợ vay trên Vốn chủ sở hữu"] = bao_cao_tai_chinh["Chỉ số tài chính"][11]["Value{}".format(str(4-i))]
+                obj["Lưu chuyển tiền tệ"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][46]["Value{}".format(str(4-i))]
+                obj["Tăng giảm các khoản phải thu"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][13]["Value{}".format(str(4-i))]
+                obj["Tăng giảm hàng tồn kho"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][14]["Value{}".format(str(4-i))]
+                obj["Tăng giảm các khoản phải trả"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][15]["Value{}".format(str(4-i))]
+                obj["Lưu chuyển tiền từ hoạt động kinh doanh"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][22]["Value{}".format(str(4-i))]
+                obj["Mua sắm TSCĐ"] =  luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][24]["Value{}".format(str(4-i))]
+                obj["Tiền chi đầu tư góp vốn vào đơn vị khác"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][28]["Value{}".format(str(4-i))]
+                obj["Tiền thu lãi vay, cổ tức và lợi nhuận được chia"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][30]["Value{}".format(str(4-i))]
+                obj["Lưu chuyển tiền từ hoạt động đầu tư"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][35]["Value{}".format(str(4-i))]
+                obj["Tiền vay ngắn hạn, dài hạn nhận được"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][39]["Value{}".format(str(4-i))]
+                obj["Tiền chi trả nợ gốc vay"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][40]["Value{}".format(str(4-i))]
+                obj["Cổ tức, lợi nhuận đã trả cho chủ sở hữu"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][42]["Value{}".format(str(4-i))]
+                obj["Lưu chuyển tiền thuần từ hoạt động tài chính"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][45]["Value{}".format(str(4-i))]
                 # print(obj)
                 yield(obj)
             except:
@@ -130,8 +112,8 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
                                       callback= self.parse_bao_cao,
                                       formdata={
                                           "Code": self.lst_cp[ck_index],
-                                          "ReportType":"BCTT",
-                                          "ReportTermType": "2",
+                                          "ReportType":"LCTT",
+                                          "ReportTermType": "1",
                                           "Unit": "1000000",
                                           "Page": str(page_number+1),
                                           "PageSize": "1"
@@ -162,8 +144,8 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
                                       callback= self.parse_bao_cao,
                                       formdata={
                                           "Code": self.lst_cp[ck_index+1],
-                                          "ReportType":"BCTT",
-                                          "ReportTermType": "2",
+                                          "ReportType":"LCTT",
+                                          "ReportTermType": "1",
                                           "Unit": "1000000",
                                           "Page": "1",
                                           "PageSize": "1"

@@ -12,8 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3b1f04fb-cb2e-41e2-8bcd-afc069b91e7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_can_doi_ke_toan_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_can_doi_ke_toan_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_spider.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
