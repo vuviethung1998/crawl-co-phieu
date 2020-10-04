@@ -11,6 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f04fb-cb2e-41e2-8bcd-afc069b91e7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_giao_dich_khoi_ngoai.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_gia.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_thong_ke_dat_lenh.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_spider.py" afterDir="false" />
     </list>
