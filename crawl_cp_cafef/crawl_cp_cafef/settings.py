@@ -70,15 +70,17 @@ USER_AGENT_LIST = [
 SPIDER_MIDDLEWARES = {
     'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
 }
+
 DOWNLOADER_MIDDLEWARES = {
-    'scrapy_splash.SplashCookiesMiddleware': 723,
-    'scrapy_splash.SplashMiddleware': 725,
-    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
-    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 400,
-    # 'crawl_cp_cafef.middlewares.RandomUserAgentMiddleware': 100,
-    # 'crawl_cp_cafef.middlewares.ProxyMiddleware': 200,
-    # 'crawl_cp_cafef.middlewares.RetryMiddleware': 820
+    # 'scrapy_splash.SplashCookiesMiddleware': 723,
+    # 'scrapy_splash.SplashMiddleware': 725,
+    # 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+    # 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 400,
+    'crawl_cp_cafef.middlewares.RandomUserAgentMiddleware': 100,
+    'crawl_cp_cafef.middlewares.ProxyMiddleware': 200,
+    'crawl_cp_cafef.middlewares.RetryMiddleware': 820
 }
+
 
 ITEM_PIPELINES = {
     'crawl_cp_cafef.pipelines.MongoDBPipeline': 1,

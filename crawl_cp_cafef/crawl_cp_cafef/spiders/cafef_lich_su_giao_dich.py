@@ -56,6 +56,8 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
 
     def parse_lich_su_giao_dich(self, response):
         ASP_sessionId = response.meta["ASP_sessionId"]
+        ck_index =  response.meta["ck_index"]
+        page_number = response.meta["page_number"]
 
         lich_su_giao_dich = response.text
         print("----------------" + lich_su_giao_dich)
@@ -64,7 +66,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
         for tr in s.find_all('tr', recursive=False):
             if start > 1:
                 data = {}
-                print(tr)
+                data['Chung_khoan_name'] = self.lst_cp[ck_index]
                 for i, td in enumerate(tr.find_all('td', recursive=False)):
                     if i % 15 == 0:
                         data['Ngày'] =  td.text.replace(u'\xa0', u'')
@@ -89,14 +91,12 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
                         data['Giá Cao Nhất'] =  float(td.text.replace(u'\xa0', u''))
                     elif i % 15 == 11:
                         data['Giá Thấp Nhất'] =  float(td.text.replace(u'\xa0', u''))
-                print(data)
+                # print(data)
                 yield data
 
             start += 1
 
         # quay lai parse
-        ck_index =  response.meta["ck_index"]
-        page_number = response.meta["page_number"]
 
         if response.meta["page_number"] <= 80:
             try:
