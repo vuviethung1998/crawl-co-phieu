@@ -11,8 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f04fb-cb2e-41e2-8bcd-afc069b91e7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_lich_su_giao_dich.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/collection_dump.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_giao_dich.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_giao_dich.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/try_tor.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/try_tor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/config/ListStock.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/config/ListStock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_lich_su_giao_dich.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_lich_su_giao_dich.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +67,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.liveboard_cafef_spider">
+  <component name="RunManager" selected="Python.test">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="crawl-co-phieu" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -166,6 +171,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="collection_dump" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="crawl-co-phieu" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/collection_dump.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="liveboard_cafef_spider" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="crawl_cp_68" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,6 +207,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/crawl_cp_68/spiders/liveboard_cafef_spider.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="crawl-co-phieu" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/crawl_cp_cafef/test_response" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/crawl_cp_cafef/test_response/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -236,6 +285,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.collection_dump" />
         <item itemvalue="Python.liveboard_cafef_spider" />
         <item itemvalue="Python.category_home_spider" />
       </list>
@@ -273,31 +324,43 @@
     </state>
     <state x="199" y="27" width="1024" height="741" key="#Project_Structure/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597420067035" />
     <state x="67" y="27" width="1299" height="741" key="#Project_Structure/67.27.2323.741@67.27.2323.741" timestamp="1598496240349" />
-    <state x="298" y="155" width="374" height="513" key="FileChooserDialogImpl" timestamp="1601820870965">
+    <state x="118" y="198" width="537" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602148719545">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="118" y="198" width="537" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1299.741@67.27.1299.741" timestamp="1602148719545" />
+    <state x="449" y="145" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601895317149">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="449" y="145" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1299.741@67.27.1299.741" timestamp="1601895317149" />
+    <state x="298" y="155" width="374" height="513" key="FileChooserDialogImpl" timestamp="1602058007079">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="500" y="155" width="495" height="484" key="FileChooserDialogImpl/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1598029549308" />
-    <state x="298" y="155" width="374" height="513" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1601820870965" />
+    <state x="298" y="155" width="374" height="513" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1602058007079" />
     <state x="480" y="155" width="495" height="513" key="FileChooserDialogImpl/67.27.2323.741@67.27.2323.741" timestamp="1598499008191" />
-    <state width="1276" height="175" key="GridCell.Tab.0.bottom" timestamp="1598499009223">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom" timestamp="1602153668402">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.0.bottom/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1602153668402" />
     <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.2323.741@67.27.2323.741" timestamp="1598499009223" />
-    <state width="1276" height="175" key="GridCell.Tab.0.center" timestamp="1598499009222">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state width="1276" height="175" key="GridCell.Tab.0.center" timestamp="1602153668399">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.0.center/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
+    <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1602153668399" />
     <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.2323.741@67.27.2323.741" timestamp="1598499009222" />
-    <state width="1276" height="175" key="GridCell.Tab.0.left" timestamp="1598499009222">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state width="1276" height="175" key="GridCell.Tab.0.left" timestamp="1602153668397">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.0.left/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071770" />
+    <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1602153668397" />
     <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.2323.741@67.27.2323.741" timestamp="1598499009222" />
-    <state width="1276" height="175" key="GridCell.Tab.0.right" timestamp="1598499009223">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state width="1276" height="175" key="GridCell.Tab.0.right" timestamp="1602153668401">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.0.right/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
+    <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1602153668401" />
     <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.2323.741@67.27.2323.741" timestamp="1598499009223" />
     <state width="1253" height="219" key="GridCell.Tab.1.bottom" timestamp="1597329071773">
       <screen x="67" y="27" width="1299" height="741" />
@@ -315,15 +378,20 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.1.right/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071772" />
-    <state x="67" y="27" width="1299" height="741" key="SettingsEditor" timestamp="1598497702731">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state x="67" y="27" width="1299" height="741" key="SettingsEditor" timestamp="1602005612182">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="204" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597420057661" />
+    <state x="67" y="27" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1602005612182" />
     <state x="67" y="27" width="1299" height="741" key="SettingsEditor/67.27.2323.741@67.27.2323.741" timestamp="1598497702731" />
     <state x="330" y="46" width="762" height="700" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598497550224">
       <screen x="67" y="27" width="2323" height="741" />
     </state>
     <state x="330" y="46" width="762" height="700" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.2323.741@67.27.2323.741" timestamp="1598497550224" />
+    <state x="497" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601895021280">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="497" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1299.741@67.27.1299.741" timestamp="1601895021280" />
     <state x="675" y="135" width="1106" height="522" key="find.popup" timestamp="1598498564476">
       <screen x="67" y="27" width="2323" height="741" />
     </state>
@@ -333,15 +401,21 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="67" y="27" width="1289" height="741" key="new project wizard/67.27.1299.741@67.27.1299.741" timestamp="1601820848193" />
-    <state x="625" y="89" width="1202" height="678" key="search.everywhere.popup" timestamp="1598497871028">
-      <screen x="67" y="27" width="2323" height="741" />
+    <state x="380" y="175" key="run.anything.popup" timestamp="1602005385318">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="380" y="175" key="run.anything.popup/67.27.1299.741@67.27.1299.741" timestamp="1602005385318" />
+    <state x="379" y="89" width="673" height="678" key="search.everywhere.popup" timestamp="1602151318383">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="379" y="89" width="672" height="678" key="search.everywhere.popup/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597379563296" />
+    <state x="379" y="89" width="673" height="678" key="search.everywhere.popup/67.27.1299.741@67.27.1299.741" timestamp="1602151318383" />
     <state x="625" y="89" width="1202" height="678" key="search.everywhere.popup/67.27.2323.741@67.27.2323.741" timestamp="1598497871028" />
-    <state x="441" y="288" width="540" height="216" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1597413940152">
+    <state x="441" y="288" width="540" height="216" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1602153585133">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="441" y="288" width="540" height="216" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597413940152" />
+    <state x="441" y="288" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/67.27.1299.741@67.27.1299.741" timestamp="1602153585133" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -350,6 +424,11 @@
           <url>file://$PROJECT_DIR$/crawl_cp_68/spiders/category_home_spider.py</url>
           <line>18</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/collection_dump.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

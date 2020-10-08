@@ -36,35 +36,35 @@ class FinanceStockChiSoTaiChinhSpider(CrawlSpider):
         # ReportTermType: 2 -> month
         # ReportTermType: 1 -> year
         yield FormRequest('https://finance.vietstock.vn/data/gettradingresult',
-                              method="POST",
-                              callback= self.parse_bao_cao,
-                              formdata={
-                                  "Code": self.lst_cp[ck_index],
-                                  "OrderBy": "",
-                                  "OrderDirection": "desc",
-                                  "PageIndex": "1",
-                                  "FromDate": "2019-10-04",
-                                  "ToDate": "2020-10-04",
-                                  "ExportType": "default",
-                                  "Cols": "Room%2CRoomCL%2CRoomCLPT%2CKL_M_GDKL%2CKL_MPT_GDKL%2CGT_M_GDKL%2CGT_MPT_GDKL%2CKL_B_GDKL%2CKL_BPT_GDKL%2CGT_B_GDKL%2CGT_BPT_GDKL%2CCL_GT_MB%2CCL_KL_MB",
-                                  "ExchangeID": "7",
-                                  "PageSize": "251"
-                              },
-                              headers= {
-                                  "X-Requested-With": "XMLHttpRequest",
-                                  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                                  'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
-                                  "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                  "Cookie": isShowLogin + "; " + language + "; " + ASP_sessionId + "; " + verifyToken + "; "
-                              },
-                              meta= {
-                                  "ck_name": self.lst_cp[ck_index],
-                                  "ck_index": ck_index,
-                                  "isShowLogin": isShowLogin,
-                                  "language": language,
-                                  "ASP_sessionId": ASP_sessionId,
-                                  "verifyToken": verifyToken
-                              }
+                          method="POST",
+                          callback= self.parse_bao_cao,
+                          formdata={
+                              "Code": self.lst_cp[ck_index],
+                              "OrderBy": "",
+                              "OrderDirection": "desc",
+                              "PageIndex": "1",
+                              "FromDate": "2019-10-04",
+                              "ToDate": "2020-10-04",
+                              "ExportType": "default",
+                              "Cols": "Room%2CRoomCL%2CRoomCLPT%2CKL_M_GDKL%2CKL_MPT_GDKL%2CGT_M_GDKL%2CGT_MPT_GDKL%2CKL_B_GDKL%2CKL_BPT_GDKL%2CGT_B_GDKL%2CGT_BPT_GDKL%2CCL_GT_MB%2CCL_KL_MB",
+                              "ExchangeID": "7",
+                              "PageSize": "251"
+                          },
+                          headers= {
+                              "X-Requested-With": "XMLHttpRequest",
+                              "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                              'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
+                              "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
+                              "Cookie": isShowLogin + "; " + language + "; " + ASP_sessionId + "; " + verifyToken + "; "
+                          },
+                          meta= {
+                              "ck_name": self.lst_cp[ck_index],
+                              "ck_index": ck_index,
+                              "isShowLogin": isShowLogin,
+                              "language": language,
+                              "ASP_sessionId": ASP_sessionId,
+                              "verifyToken": verifyToken
+                          }
                           )
 
 
@@ -130,35 +130,35 @@ class FinanceStockChiSoTaiChinhSpider(CrawlSpider):
 
         try:
             yield FormRequest('https://finance.vietstock.vn/data/gettradingresult',
-                                  method="POST",
-                                  callback= self.parse_bao_cao,
-                                  formdata={
-                                      "Code": self.lst_cp[ck_index+1],
-                                      "OrderBy": "",
-                                      "OrderDirection": "desc",
-                                      "PageIndex": "1",
-                                      "FromDate": "2019-10-04",
-                                      "ToDate": "2020-10-04",
-                                      "ExportType": "default",
-                                      "Cols": "Room%2CRoomCL%2CRoomCLPT%2CKL_M_GDKL%2CKL_MPT_GDKL%2CGT_M_GDKL%2CGT_MPT_GDKL%2CKL_B_GDKL%2CKL_BPT_GDKL%2CGT_B_GDKL%2CGT_BPT_GDKL%2CCL_GT_MB%2CCL_KL_MB",
-                                      "ExchangeID": "7",
-                                      "PageSize": "251"
-                                  },
-                                  headers= {
-                                      "X-Requested-With": "XMLHttpRequest",
-                                      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                                      'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
-                                      "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                      "Cookie": isShowLogin + "; " + language + "; " + ASP_sessionId + "; " + verifyToken + "; "
-                                  },
-                                  meta= {
-                                      "ck_name": self.lst_cp[ck_index+1],
-                                      "ck_index": ck_index + 1,
-                                      "isShowLogin": isShowLogin,
-                                      "language": language,
-                                      "ASP_sessionId": ASP_sessionId,
-                                      "verifyToken": verifyToken
-                                  }
+                              method="POST",
+                              callback= self.parse_bao_cao,
+                              formdata={
+                                  "Code": self.lst_cp[ck_index+1],
+                                  "OrderBy": "",
+                                  "OrderDirection": "desc",
+                                  "PageIndex": "1",
+                                  "FromDate": "2019-10-04",
+                                  "ToDate": "2020-10-04",
+                                  "ExportType": "default",
+                                  "Cols": "Room%2CRoomCL%2CRoomCLPT%2CKL_M_GDKL%2CKL_MPT_GDKL%2CGT_M_GDKL%2CGT_MPT_GDKL%2CKL_B_GDKL%2CKL_BPT_GDKL%2CGT_B_GDKL%2CGT_BPT_GDKL%2CCL_GT_MB%2CCL_KL_MB",
+                                  "ExchangeID": "7",
+                                  "PageSize": "251"
+                              },
+                              headers= {
+                                  "X-Requested-With": "XMLHttpRequest",
+                                  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                                  'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
+                                  "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
+                                  "Cookie": isShowLogin + "; " + language + "; " + ASP_sessionId + "; " + verifyToken + "; "
+                              },
+                              meta= {
+                                  "ck_name": self.lst_cp[ck_index+1],
+                                  "ck_index": ck_index + 1,
+                                  "isShowLogin": isShowLogin,
+                                  "language": language,
+                                  "ASP_sessionId": ASP_sessionId,
+                                  "verifyToken": verifyToken
+                              }
                               )
         except:
             pass

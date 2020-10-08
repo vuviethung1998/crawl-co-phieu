@@ -15,7 +15,11 @@ class MongoDBPipeline(object):
     def __init__(self):
         connection = MongoClient(settings.get('MONGODB_URI'))
         db = connection[settings['MONGODB_DATABASE']]
-        # self.collection = db[settings['CRAWLER_COLLECTION']]
+
+        # self.collection = {}
+        # for collection_name in settings['CRAWLER_COLLECTION']:
+        #     self.collection[collection_name] = db[collection_name]
+        # self.collection = db.database[settings['CRAWLER_COLLECTION']]
         self.collection = db.database[settings['CRAWLER_COLLECTION']]
 
     def process_item(self, item, spider):
