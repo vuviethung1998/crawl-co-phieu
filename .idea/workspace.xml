@@ -11,10 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f04fb-cb2e-41e2-8bcd-afc069b91e7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_thong_ke_dat_lenh.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/config/ListStock.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/config/ListStock.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_giao_dich.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_giao_dich.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/try_tor.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/try_tor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/test_response/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/test_response/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -58,6 +59,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/crawl_cp_68/config" />
       <recent name="$PROJECT_DIR$/crawl_cp_68" />
@@ -335,29 +339,29 @@
     <state x="500" y="155" width="495" height="484" key="FileChooserDialogImpl/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1598029549308" />
     <state x="298" y="155" width="374" height="513" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1602058007079" />
     <state x="480" y="155" width="495" height="513" key="FileChooserDialogImpl/67.27.2323.741@67.27.2323.741" timestamp="1598499008191" />
-    <state width="1276" height="175" key="GridCell.Tab.0.bottom" timestamp="1602153668402">
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom" timestamp="1602156969429">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.0.bottom/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
-    <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1602153668402" />
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1602156969429" />
     <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.2323.741@67.27.2323.741" timestamp="1598499009223" />
-    <state width="1276" height="175" key="GridCell.Tab.0.center" timestamp="1602153668399">
+    <state width="1276" height="175" key="GridCell.Tab.0.center" timestamp="1602156969425">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.0.center/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
-    <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1602153668399" />
+    <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1602156969425" />
     <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.2323.741@67.27.2323.741" timestamp="1598499009222" />
-    <state width="1276" height="175" key="GridCell.Tab.0.left" timestamp="1602153668397">
+    <state width="1276" height="175" key="GridCell.Tab.0.left" timestamp="1602156969423">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.0.left/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071770" />
-    <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1602153668397" />
+    <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1602156969423" />
     <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.2323.741@67.27.2323.741" timestamp="1598499009222" />
-    <state width="1276" height="175" key="GridCell.Tab.0.right" timestamp="1602153668401">
+    <state width="1276" height="175" key="GridCell.Tab.0.right" timestamp="1602156969427">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1253" height="219" key="GridCell.Tab.0.right/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
-    <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1602153668401" />
+    <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1602156969427" />
     <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.2323.741@67.27.2323.741" timestamp="1598499009223" />
     <state width="1253" height="219" key="GridCell.Tab.1.bottom" timestamp="1597329071773">
       <screen x="67" y="27" width="1299" height="741" />
