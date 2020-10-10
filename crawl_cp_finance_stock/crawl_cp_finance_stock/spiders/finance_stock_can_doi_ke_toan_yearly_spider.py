@@ -5,17 +5,17 @@ import random
 from crawl_cp_finance_stock.import_setting import *
 from crawl_cp_finance_stock.config.ListStock import *
 
-class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
-    name = "finance_stock_luu_chuyen_tien_te"
+class FinanceStockChiSoTaiChinhYearlySpider(CrawlSpider):
+    name = "finance_stock_can_doi_ke_toan_yearly"
 
     def __init__(self, **kwargs):
-        super(FinanceStockLuuChuyenTienTeSpider, self).__init__(**kwargs)
+        super(FinanceStockChiSoTaiChinhYearlySpider, self).__init__(**kwargs)
         self.allowed_domains = ['finance.vietstock.vn']
 
         self.lst_cp =  HOSE + HNX
 
         self.start_urls = ['https://finance.vietstock.vn']
-        settings['CRAWLER_COLLECTION'] = "LUU_CHUYEN_TIEN_TE"
+        settings['CRAWLER_COLLECTION'] = 'CAN_DOI_KE_TOAN_YEARLY'
 
     def start_requests(self):
         for url in self.start_urls:
@@ -32,15 +32,16 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
 
         page_number = response.meta['page_number']
         ck_index = response.meta["ck_index"]
-
         print(self.lst_cp[ck_index])
 
+        # ReportTermType: 2 -> month
+        # ReportTermType: 1 -> year
         yield FormRequest('https://finance.vietstock.vn/data/financeinfo',
                                 method="POST",
                                 callback= self.parse_bao_cao,
                                 formdata={
                                    "Code": self.lst_cp[ck_index],
-                                   "ReportType":"LCTT",
+                                   "ReportType":"CDKT",
                                    "ReportTermType": "1",
                                    "Unit": "1000000",
                                    "Page": str(page_number),
@@ -72,7 +73,7 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
         verifyToken = response.meta["verifyToken"]
 
         thong_tin = json.loads(response.body)[0]
-        luu_chuyen_tien_te = json.loads(response.body)[1]
+        can_doi_ke_toan = json.loads(response.body)[1]
 
         for i in range(0,4):
             try:
@@ -81,20 +82,39 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
                 obj["Quarter"] = thong_tin[i]["TermCode"]
                 obj["Year"] = thong_tin[i]["YearPeriod"]
                 obj["ID_Chung_khoan"] = thong_tin[i]["CompanyID"]
-                obj["Lưu chuyển tiền tệ"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][46]["Value{}".format(str(4-i))]
-                obj["Tăng giảm các khoản phải thu"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][13]["Value{}".format(str(4-i))]
-                obj["Tăng giảm hàng tồn kho"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][14]["Value{}".format(str(4-i))]
-                obj["Tăng giảm các khoản phải trả"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][15]["Value{}".format(str(4-i))]
-                obj["Lưu chuyển tiền từ hoạt động kinh doanh"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][22]["Value{}".format(str(4-i))]
-                obj["Mua sắm TSCĐ"] =  luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][24]["Value{}".format(str(4-i))]
-                obj["Tiền chi đầu tư góp vốn vào đơn vị khác"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][28]["Value{}".format(str(4-i))]
-                obj["Tiền thu lãi vay, cổ tức và lợi nhuận được chia"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][30]["Value{}".format(str(4-i))]
-                obj["Lưu chuyển tiền từ hoạt động đầu tư"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][35]["Value{}".format(str(4-i))]
-                obj["Tiền vay ngắn hạn, dài hạn nhận được"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][39]["Value{}".format(str(4-i))]
-                obj["Tiền chi trả nợ gốc vay"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][40]["Value{}".format(str(4-i))]
-                obj["Cổ tức, lợi nhuận đã trả cho chủ sở hữu"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][42]["Value{}".format(str(4-i))]
-                obj["Lưu chuyển tiền thuần từ hoạt động tài chính"] = luu_chuyen_tien_te["Lưu chuyển tiền tệ gián tiếp"][45]["Value{}".format(str(4-i))]
-                # print(obj)
+                obj["Tài sản ngắn hạn"] = can_doi_ke_toan["Cân đối kế toán"][1]["Value{}".format(str(4-i))]
+                obj["Tiền và tài sản tương đương tiền"] = can_doi_ke_toan["Cân đối kế toán"][2]["Value{}".format(str(4-i))]
+                obj["Đầu tư tài chính ngắn hạn"] = can_doi_ke_toan["Cân đối kế toán"][5]["Value{}".format(str(4-i))]
+                obj["Các khoản phải thu ngắn hạn"] = can_doi_ke_toan["Cân đối kế toán"][9]["Value{}".format(str(4-i))]
+                obj["Hàng tồn kho"] = can_doi_ke_toan["Cân đối kế toán"][18]["Value{}".format(str(4-i))]
+                obj["Tài sản dài hạn"] = can_doi_ke_toan["Cân đối kế toán"][27]["Value{}".format(str(4-i))]
+                obj["Khoản phải thu dài hạn"] = can_doi_ke_toan["Cân đối kế toán"][28]["Value{}".format(str(4-i))]
+                obj["Tài sản cố định hữu hình"] = can_doi_ke_toan["Cân đối kế toán"][37]["Value{}".format(str(4-i))]
+                obj["Tài sản cố định vô hình"] = can_doi_ke_toan["Cân đối kế toán"][43]["Value{}".format(str(4-i))]
+                obj["Bất động sản đầu tư"] = can_doi_ke_toan["Cân đối kế toán"][46]["Value{}".format(str(4-i))]
+                obj["Tài sản dở dang dài hạn"] = can_doi_ke_toan["Cân đối kế toán"][49]["Value{}".format(str(4-i))]
+                obj["Đầu tư tài chính dài hạn"] = can_doi_ke_toan["Cân đối kế toán"][52]["Value{}".format(str(4-i))]
+                obj["Tổng cộng nguồn vốn"] = can_doi_ke_toan["Cân đối kế toán"][122]["Value{}".format(str(4-i))]
+                obj["Nợ phải trả"] = can_doi_ke_toan["Cân đối kế toán"][67]["Value{}".format(str(4-i))]
+                obj["Nợ ngắn hạn"] = can_doi_ke_toan["Cân đối kế toán"][68]["Value{}".format(str(4-i))]
+                obj["Vay và nợ ngắn hạn"] = can_doi_ke_toan["Cân đối kế toán"][78]["Value{}".format(str(4-i))]
+                obj["Phải trả người bán"] = can_doi_ke_toan["Cân đối kế toán"][69]["Value{}".format(str(4-i))]
+                obj["Người mua trả tiền trước"] = can_doi_ke_toan["Cân đối kế toán"][70]["Value{}".format(str(4-i))]
+                obj["Phải trả người lao động"] = can_doi_ke_toan["Cân đối kế toán"][72]["Value{}".format(str(4-i))]
+                obj["Chi phí phải trả ngắn hạn"] = can_doi_ke_toan["Cân đối kế toán"][73]["Value{}".format(str(4-i))]
+                obj["Doanh thu chưa thực hiện ngắn hạn"] = can_doi_ke_toan["Cân đối kế toán"][76]["Value{}".format(str(4-i))]
+                obj["Nợ dài hạn"] = can_doi_ke_toan["Cân đối kế toán"][83]["Value{}".format(str(4-i))]
+                obj["Vay và nợ dài hạn"] = can_doi_ke_toan["Cân đối kế toán"][91]["Value{}".format(str(4-i))]
+                obj["Phải trả dài hạn người bán"] = can_doi_ke_toan["Cân đối kế toán"][84]["Value{}".format(str(4-i))]
+                obj["Người mua trả tiền trước dài hạn"] = can_doi_ke_toan["Cân đối kế toán"][85]["Value{}".format(str(4-i))]
+                obj["Doanh thu chưa thực hiện dài hạn"] = can_doi_ke_toan["Cân đối kế toán"][89]["Value{}".format(str(4-i))]
+                obj["Vốn chủ sở hữu"] = can_doi_ke_toan["Cân đối kế toán"][98]["Value{}".format(str(4-i))]
+                obj["Cổ phiếu phổ thông"] = can_doi_ke_toan["Cân đối kế toán"][101]["Value{}".format(str(4-i))]
+                obj["Thặng dư vốn cổ phần"] = can_doi_ke_toan["Cân đối kế toán"][103]["Value{}".format(str(4-i))]
+                obj["Cổ phiếu quỹ"] = can_doi_ke_toan["Cân đối kế toán"][106]["Value{}".format(str(4-i))]
+                obj["Quỹ đầu tư phát triển"] = can_doi_ke_toan["Cân đối kế toán"][109]["Value{}".format(str(4-i))]
+                obj["Lợi nhuận chưa phân phối"] = can_doi_ke_toan["Cân đối kế toán"][112]["Value{}".format(str(4-i))]
+
                 yield(obj)
             except:
                 pass
@@ -105,14 +125,14 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
         page_number = response.meta["page_number"]
         ck_index =  response.meta["ck_index"]
 
-        if response.meta["page_number"] <= 5:
+        if response.meta["page_number"] <= 10:
             try:
                 yield FormRequest('https://finance.vietstock.vn/data/financeinfo',
                                       method="POST",
                                       callback= self.parse_bao_cao,
                                       formdata={
                                           "Code": self.lst_cp[ck_index],
-                                          "ReportType":"LCTT",
+                                          "ReportType":"CDKT",
                                           "ReportTermType": "1",
                                           "Unit": "1000000",
                                           "Page": str(page_number+1),
@@ -144,7 +164,7 @@ class FinanceStockLuuChuyenTienTeSpider(CrawlSpider):
                                       callback= self.parse_bao_cao,
                                       formdata={
                                           "Code": self.lst_cp[ck_index+1],
-                                          "ReportType":"LCTT",
+                                          "ReportType":"CDKT",
                                           "ReportTermType": "1",
                                           "Unit": "1000000",
                                           "Page": "1",

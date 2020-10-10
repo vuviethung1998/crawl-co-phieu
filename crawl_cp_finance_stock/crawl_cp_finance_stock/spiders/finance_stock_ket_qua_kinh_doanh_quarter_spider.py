@@ -5,17 +5,17 @@ import random
 from crawl_cp_finance_stock.import_setting import *
 from crawl_cp_finance_stock.config.ListStock import *
 
-class FinanceStockKetQuaKinhDoanhSpider(CrawlSpider):
-    name = "finance_stock_ket_qua_kinh_doanh"
+class FinanceStockKetQuaKinhDoanhQuarterSpider(CrawlSpider):
+    name = "finance_stock_ket_qua_kinh_doanh_quarter"
 
     def __init__(self, **kwargs):
-        super(FinanceStockKetQuaKinhDoanhSpider, self).__init__(**kwargs)
+        super(FinanceStockKetQuaKinhDoanhQuarterSpider, self).__init__(**kwargs)
         self.allowed_domains = ['finance.vietstock.vn']
 
         self.lst_cp =  HOSE + HNX
 
         self.start_urls = ['https://finance.vietstock.vn']
-        settings['CRAWLER_COLLECTION'] = "KET_QUA_KINH_DOANH"
+        settings['CRAWLER_COLLECTION'] = "KET_QUA_KINH_DOANH_QUARTER"
 
     def start_requests(self):
         for url in self.start_urls:
@@ -41,7 +41,7 @@ class FinanceStockKetQuaKinhDoanhSpider(CrawlSpider):
                                 formdata={
                                    "Code": self.lst_cp[ck_index],
                                    "ReportType":"KQKD",
-                                   "ReportTermType": "1",
+                                   "ReportTermType": "2",
                                    "Unit": "1000000",
                                    "Page": str(page_number),
                                    "PageSize": "1"
@@ -105,7 +105,7 @@ class FinanceStockKetQuaKinhDoanhSpider(CrawlSpider):
         page_number = response.meta["page_number"]
         ck_index =  response.meta["ck_index"]
 
-        if response.meta["page_number"] <= 5:
+        if response.meta["page_number"] <= 40:
             try:
                 yield FormRequest('https://finance.vietstock.vn/data/financeinfo',
                                       method="POST",
@@ -113,7 +113,7 @@ class FinanceStockKetQuaKinhDoanhSpider(CrawlSpider):
                                       formdata={
                                           "Code": self.lst_cp[ck_index],
                                           "ReportType":"KQKD",
-                                          "ReportTermType": "1",
+                                          "ReportTermType": "2",
                                           "Unit": "1000000",
                                           "Page": str(page_number+1),
                                           "PageSize": "1"
@@ -137,35 +137,35 @@ class FinanceStockKetQuaKinhDoanhSpider(CrawlSpider):
                                   )
             except:
                 pass
-        else:
-            try:
-                yield FormRequest('https://finance.vietstock.vn/data/financeinfo',
-                                      method="POST",
-                                      callback= self.parse_bao_cao,
-                                      formdata={
-                                          "Code": self.lst_cp[ck_index+1],
-                                          "ReportType":"KQKD",
-                                          "ReportTermType": "1",
-                                          "Unit": "1000000",
-                                          "Page": "1",
-                                          "PageSize": "1"
-                                      },
-                                      headers= {
-                                          "X-Requested-With": "XMLHttpRequest",
-                                          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                                          'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
-                                          "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                          "Cookie": isShowLogin + "; " + language + "; " + ASP_sessionId + "; " + verifyToken + "; "
-                                      },
-                                      meta= {
-                                          "ck_name": self.lst_cp[ck_index+1],
-                                          "ck_index": ck_index+1,
-                                          "page_number": 1,
-                                          "isShowLogin": isShowLogin,
-                                          "language": language,
-                                          "ASP_sessionId": ASP_sessionId,
-                                          "verifyToken": verifyToken
-                                      }
-                                  )
-            except:
-                pass
+            else:
+                try:
+                    yield FormRequest('https://finance.vietstock.vn/data/financeinfo',
+                                          method="POST",
+                                          callback= self.parse_bao_cao,
+                                          formdata={
+                                              "Code": self.lst_cp[ck_index+1],
+                                              "ReportType":"KQKD",
+                                              "ReportTermType": "2",
+                                              "Unit": "1000000",
+                                              "Page": "1",
+                                              "PageSize": "1"
+                                          },
+                                          headers= {
+                                              "X-Requested-With": "XMLHttpRequest",
+                                              "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                                              'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
+                                              "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
+                                              "Cookie": isShowLogin + "; " + language + "; " + ASP_sessionId + "; " + verifyToken + "; "
+                                          },
+                                          meta= {
+                                              "ck_name": self.lst_cp[ck_index+1],
+                                              "ck_index": ck_index+1,
+                                              "page_number": 1,
+                                              "isShowLogin": isShowLogin,
+                                              "language": language,
+                                              "ASP_sessionId": ASP_sessionId,
+                                              "verifyToken": verifyToken
+                                          }
+                                      )
+                except:
+                    pass

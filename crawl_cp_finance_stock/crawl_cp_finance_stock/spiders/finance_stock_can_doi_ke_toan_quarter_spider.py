@@ -5,17 +5,17 @@ import random
 from crawl_cp_finance_stock.import_setting import *
 from crawl_cp_finance_stock.config.ListStock import *
 
-class FinanceStockChiSoTaiChinhSpider(CrawlSpider):
-    name = "finance_stock_can_doi_ke_toan"
+class FinanceStockChiSoTaiChinhQuarterSpider(CrawlSpider):
+    name = "finance_stock_can_doi_ke_toan_quarter"
 
     def __init__(self, **kwargs):
-        super(FinanceStockChiSoTaiChinhSpider, self).__init__(**kwargs)
+        super(FinanceStockChiSoTaiChinhQuarterSpider, self).__init__(**kwargs)
         self.allowed_domains = ['finance.vietstock.vn']
 
         self.lst_cp =  HOSE + HNX
 
         self.start_urls = ['https://finance.vietstock.vn']
-        settings['CRAWLER_COLLECTION'] = 'CAN_DOI_KE_TOAN'
+        settings['CRAWLER_COLLECTION'] = 'CAN_DOI_KE_TOAN_QUARTER'
 
     def start_requests(self):
         for url in self.start_urls:
@@ -42,7 +42,7 @@ class FinanceStockChiSoTaiChinhSpider(CrawlSpider):
                                 formdata={
                                    "Code": self.lst_cp[ck_index],
                                    "ReportType":"CDKT",
-                                   "ReportTermType": "1",
+                                   "ReportTermType": "2",
                                    "Unit": "1000000",
                                    "Page": str(page_number),
                                    "PageSize": "1"
@@ -125,7 +125,7 @@ class FinanceStockChiSoTaiChinhSpider(CrawlSpider):
         page_number = response.meta["page_number"]
         ck_index =  response.meta["ck_index"]
 
-        if response.meta["page_number"] <= 5:
+        if response.meta["page_number"] <= 40:
             try:
                 yield FormRequest('https://finance.vietstock.vn/data/financeinfo',
                                       method="POST",
@@ -133,7 +133,7 @@ class FinanceStockChiSoTaiChinhSpider(CrawlSpider):
                                       formdata={
                                           "Code": self.lst_cp[ck_index],
                                           "ReportType":"CDKT",
-                                          "ReportTermType": "1",
+                                          "ReportTermType": "2",
                                           "Unit": "1000000",
                                           "Page": str(page_number+1),
                                           "PageSize": "1"
@@ -165,7 +165,7 @@ class FinanceStockChiSoTaiChinhSpider(CrawlSpider):
                                       formdata={
                                           "Code": self.lst_cp[ck_index+1],
                                           "ReportType":"CDKT",
-                                          "ReportTermType": "1",
+                                          "ReportTermType": "2",
                                           "Unit": "1000000",
                                           "Page": "1",
                                           "PageSize": "1"

@@ -13,7 +13,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
         super(CafefLichSuGiaoDichSpider, self).__init__(**kwargs)
         self.allowed_domains = ['cafef.vn']
 
-        self.lst_cp = VN30 + HNX30
+        self.lst_cp = HOSE + HNX
 
         self.start_urls = ['https://s.cafef.vn']
         settings['CRAWLER_COLLECTION'] = 'LICH_SU_GIAO_DICH'
@@ -37,7 +37,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
         yield Request('https://s.cafef.vn/Lich-su-giao-dich-VIC-1.chn',
                               method="POST",
                               callback= self.parse_lich_su_giao_dich,
-                              body="ctl00%24ContentPlaceHolder1%24scriptmanager=ctl00%24ContentPlaceHolder1%24ctl03%24panelAjax%7Cctl00%24ContentPlaceHolder1%24ctl03%24pager2&ctl00%24ContentPlaceHolder1%24ctl03%24txtKeyword={}&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate1%24txtDatePicker=&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate2%24txtDatePicker=&ctl00%24UcFooter2%24hdIP=&__EVENTTARGET=ctl00%24ContentPlaceHolder1%24ctl03%24pager2&__EVENTARGUMENT={}&__VIEWSTATE=%2FwEPDwUKMTU2NzY0ODUyMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY3RsMDMkYnRTZWFyY2jJnyPYjjwDsOatyCQBZar0ZSQygQ%3D%3D&__VIEWSTATEGENERATOR=2E2252AF&__ASYNCPOST=true&".format(self.lst_cp[ck_index], 1),
+                              body="ctl00%24ContentPlaceHolder1%24scriptmanager=ctl00%24ContentPlaceHolder1%24ctl03%24panelAjax%7Cctl00%24ContentPlaceHolder1%24ctl03%24pager2&ctl00%24ContentPlaceHolder1%24ctl03%24txtKeyword={}&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate1%24txtDatePicker=&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate2%24txtDatePicker=&ctl00%24UcFooter2%24hdIP=&__EVENTTARGET=ctl00%24ContentPlaceHolder1%24ctl03%24pager2&__EVENTARGUMENT={}&__VIEWSTATE=%2FwEPDwUKMTU2NzY0ODUyMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY3RsMDMkYnRTZWFyY2jJnyPYjjwDsOatyCQBZar0ZSQygQ%3D%3D&__VIEWSTATEGENERATOR=2E2252AF&__ASYNCPOST=true&".format(self.lst_cp[ck_index], page_number),
                               headers= {
                                   "X-Requested-With": "XMLHttpRequest",
                                   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -60,7 +60,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
         page_number = response.meta["page_number"]
 
         lich_su_giao_dich = response.text
-        print("----------------" + lich_su_giao_dich)
+        # print("----------------" + lich_su_giao_dich)
         s = soup(lich_su_giao_dich, features='lxml').table
         start = 0
         for tr in s.find_all('tr', recursive=False):
@@ -71,26 +71,57 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
                     if i % 15 == 0:
                         data['Ngày'] =  td.text.replace(u'\xa0', u'')
                     elif i % 15 == 1:
-                        data['Giá Điều Chỉnh'] =  float(td.text.replace(u'\xa0', u''))
+                        try:
+                            data['Giá Điều Chỉnh'] =  float(td.text.replace(u'\xa0', u''))
+                        except:
+                            data['Giá Điều Chỉnh'] = 0
                     elif i % 15 == 2:
-                        data['Giá Đóng Cửa'] =  float(td.text.replace(u'\xa0', u''))
+                        try:
+                            data['Giá Đóng Cửa'] =  float(td.text.replace(u'\xa0', u''))
+                        except:
+                            data['Giá Điều Chỉnh'] = 0
                     elif i % 15 == 3:
-                        data['Thay Đổi'] = float(td.text.split('(')[0])
-                        data["Thay Đổi Theo %"] = float(td.text.split('(')[1].strip()[:-2])
+                        try:
+                            data['Thay Đổi'] = float(td.text.split('(')[0])
+                            data["Thay Đổi Theo %"] = float(td.text.split('(')[1].strip()[:-2])
+                        except:
+                            data['Thay Đổi'] = 0
+                            data["Thay Đổi Theo %"] = 0
                     elif i % 15 == 5:
-                        data['KL GD Khớp Lệnh'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['KL GD Khớp Lệnh'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['KL GD Khớp Lệnh']  =0
                     elif i % 15 == 6:
-                        data['GT GD Khớp Lệnh'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['GT GD Khớp Lệnh'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['GT GD Khớp Lệnh']  = 0
                     elif i % 15 == 7:
-                        data['KL GD Thỏa Thuận'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['KL GD Thỏa Thuận'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['KL GD Thỏa Thuận'] = 0
                     elif i % 15 == 8:
-                        data['GT GD Thỏa Thuận'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['GT GD Thỏa Thuận'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['GT GD Thỏa Thuận'] = 0
                     elif i % 15 == 9:
-                        data['Giá Mở Cửa'] =  float(td.text.replace(u'\xa0', u''))
+                        try:
+                            data['Giá Mở Cửa'] =  float(td.text.replace(u'\xa0', u''))
+                        except:
+                            data['Giá Mở Cửa'] = 0
                     elif i % 15 == 10:
-                        data['Giá Cao Nhất'] =  float(td.text.replace(u'\xa0', u''))
+                        try:
+                            data['Giá Cao Nhất'] =  float(td.text.replace(u'\xa0', u''))
+                        except:
+                            data['Giá Cao Nhất'] = 0
                     elif i % 15 == 11:
-                        data['Giá Thấp Nhất'] =  float(td.text.replace(u'\xa0', u''))
+                        try:
+                            data['Giá Thấp Nhất'] =  float(td.text.replace(u'\xa0', u''))
+                        except:
+                            data['Giá Thấp Nhất'] = 0
                 # print(data)
                 yield data
 
@@ -98,7 +129,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
 
         # quay lai parse
 
-        if response.meta["page_number"] <= 80:
+        if response.meta["page_number"] <= 120:
             try:
                 yield Request('https://s.cafef.vn/Lich-su-giao-dich-VIC-1.chn',
                                   method="POST",

@@ -13,7 +13,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
         super(CafefLichSuGiaoDichSpider, self).__init__(**kwargs)
         self.allowed_domains = ['cafef.vn']
 
-        self.lst_cp = VN30 + HNX30
+        self.lst_cp = HOSE + HNX
 
         self.start_urls = ['https://s.cafef.vn']
         settings['CRAWLER_COLLECTION'] = 'THONG_KE_DAT_LENH'
@@ -54,6 +54,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
                               }
                           )
 
+
     def thong_ke_dat_lenh(self, response):
         ASP_sessionId = response.meta["ASP_sessionId"]
         ck_index =  response.meta["ck_index"]
@@ -65,32 +66,58 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
         for tr in s.find_all('tr', recursive=False):
             if start >= 1:
                 data = {}
+                data['Chung_khoan_name'] = self.lst_cp[ck_index]
                 for i, td in enumerate(tr.find_all('td', recursive=False)):
                     if i % 9 == 0:
                         data['Ngày'] =  td.text.replace(u'\xa0', u'')
                     elif i % 9 == 1:
-                        data['Thay Đổi'] = float(td.text.split('(')[0])
-                        data["Thay Đổi Theo %"] = float(td.text.split('(')[1].strip()[:-2])
+                        try:
+                            data['Thay Đổi'] = float(td.text.split('(')[0])
+                            data["Thay Đổi Theo %"] = float(td.text.split('(')[1].strip()[:-2])
+                        except:
+                            data['Thay Đổi'] =  0
+                            data["Thay Đổi Theo %"] = 0
                     elif i % 9 == 2:
-                        data['Số lệnh mua'] =   int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['Số lệnh mua Khớp Lệnh'] =   int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['Số lệnh mua Khớp Lệnh'] = 0
                     elif i % 9 == 3:
-                        data['Khối lượng đặt mua'] = int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['Khối lượng đặt mua Khớp Lệnh'] = int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['Khối lượng đặt mua Khớp Lệnh']  = 0
                     elif i % 9 == 4:
-                        data['KLTB 1 lệnh mua'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['KLTB 1 lệnh mua Khớp Lệnh'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['KLTB 1 lệnh mua Khớp Lệnh'] = 0
                     elif i % 9 == 5:
-                        data['Số lệnh bán'] =   int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['Số lệnh bán Khớp Lệnh'] =   int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['Số lệnh bán Khớp Lệnh'] = 0
                     elif i % 9 == 6:
-                        data['Khối lượng đặt bán'] = int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['Khối lượng đặt bán Khớp Lệnh'] = int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['Khối lượng đặt bán Khớp Lệnh'] = 0
                     elif i % 9 == 7:
-                        data['KLTB 1 lệnh bán'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['KLTB 1 lệnh bán Khớp Lệnh'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['KLTB 1 lệnh bán Khớp Lệnh'] = 0
                     elif i % 9 == 8:
-                        data['Chênh lệch KL đặt mua - đặt bán'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        try:
+                            data['Chênh lệch KL đặt mua - đặt bán'] =  int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                        except:
+                            data['Chênh lệch KL đặt mua - đặt bán'] = 0
                 yield data
             start += 1
 
         # quay lai parse
 
-        if response.meta["page_number"] <= 80:
+        if response.meta["page_number"] <= 120:
             try:
                 yield Request('https://s.cafef.vn/Lich-su-giao-dich-VIC-2.chn',
                                   method="POST",

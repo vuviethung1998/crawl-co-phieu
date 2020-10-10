@@ -12,7 +12,7 @@ def convert_timestamp_in_datetime_utc(timestamp_received):
 if __name__ == '__main__':
     MONGODB_URI = "mongodb://admin:admin@localhost:27017"
     MONGODB_DATABASE = 'CRAWLER_CO_PHIEU_FINANCE_STOCK'
-    CRAWLER_COLLECTION = "LICH_SU_GIAO_DICH"
+    CRAWLER_COLLECTION = "KET_QUA_KINH_DOANH"
 
     connection = MongoClient(MONGODB_URI)
     db = connection[MONGODB_DATABASE]
@@ -30,9 +30,8 @@ if __name__ == '__main__':
     # write to csv
     lst_dict = []
     for doc in cursor:
-        doc['Ngày Giao Dịch'] = convert_timestamp_in_datetime_utc(int(doc['Ngày Giao Dịch']) / 1000 )
+        # doc['Ngày Giao Dịch'] = convert_timestamp_in_datetime_utc(int(doc['Ngày Giao Dịch']) / 1000 )
         lst_dict.append(doc)
 
     df = pd.DataFrame(lst_dict)
-    df.to_csv('output.csv', index=False)
-
+    df.to_csv('ket_qua_kinh_doanh_yearly.csv', index=False)
