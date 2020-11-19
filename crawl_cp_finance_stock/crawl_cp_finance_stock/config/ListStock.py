@@ -1,5 +1,6 @@
-# HOSE = [ 'FPT', 'VIC']
-# HNX = []
+#HOSE = ['VIC', 'FPT' ]
+#HNX = []
+
 
 HOSE = ['AAA',
         'AAM',
@@ -377,9 +378,11 @@ HOSE = ['AAA',
         'VTB',
         'VTO',
         'YBM',
-        'YEG']
+        'YEG'
+        ]
 
-HNX = ['AAV',
+HNX = [
+       'AAV',
        'ACB',
        'ACM',
        'ADC',

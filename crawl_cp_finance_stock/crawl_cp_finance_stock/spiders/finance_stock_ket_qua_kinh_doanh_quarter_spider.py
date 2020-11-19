@@ -137,35 +137,35 @@ class FinanceStockKetQuaKinhDoanhQuarterSpider(CrawlSpider):
                                   )
             except:
                 pass
-            else:
-                try:
-                    yield FormRequest('https://finance.vietstock.vn/data/financeinfo',
-                                          method="POST",
-                                          callback= self.parse_bao_cao,
-                                          formdata={
-                                              "Code": self.lst_cp[ck_index+1],
-                                              "ReportType":"KQKD",
-                                              "ReportTermType": "2",
-                                              "Unit": "1000000",
-                                              "Page": "1",
-                                              "PageSize": "1"
-                                          },
-                                          headers= {
-                                              "X-Requested-With": "XMLHttpRequest",
-                                              "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                                              'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
-                                              "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                              "Cookie": isShowLogin + "; " + language + "; " + ASP_sessionId + "; " + verifyToken + "; "
-                                          },
-                                          meta= {
-                                              "ck_name": self.lst_cp[ck_index+1],
-                                              "ck_index": ck_index+1,
-                                              "page_number": 1,
-                                              "isShowLogin": isShowLogin,
-                                              "language": language,
-                                              "ASP_sessionId": ASP_sessionId,
-                                              "verifyToken": verifyToken
-                                          }
-                                      )
-                except:
-                    pass
+        else:
+            try:
+                yield FormRequest('https://finance.vietstock.vn/data/financeinfo',
+                                      method="POST",
+                                      callback= self.parse_bao_cao,
+                                      formdata={
+                                          "Code": self.lst_cp[ck_index+1],
+                                          "ReportType":"KQKD",
+                                          "ReportTermType": "2",
+                                          "Unit": "1000000",
+                                          "Page": "1",
+                                          "PageSize": "1"
+                                      },
+                                      headers= {
+                                          "X-Requested-With": "XMLHttpRequest",
+                                          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                                          'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
+                                          "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
+                                          "Cookie": isShowLogin + "; " + language + "; " + ASP_sessionId + "; " + verifyToken + "; "
+                                      },
+                                      meta= {
+                                          "ck_name": self.lst_cp[ck_index+1],
+                                          "ck_index": ck_index+1,
+                                          "page_number": 1,
+                                          "isShowLogin": isShowLogin,
+                                          "language": language,
+                                          "ASP_sessionId": ASP_sessionId,
+                                          "verifyToken": verifyToken
+                                      }
+                                  )
+            except:
+                pass

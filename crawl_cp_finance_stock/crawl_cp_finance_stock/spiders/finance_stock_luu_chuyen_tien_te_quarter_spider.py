@@ -113,7 +113,7 @@ class FinanceStockLuuChuyenTienTeQuarterSpider(CrawlSpider):
                                       formdata={
                                           "Code": self.lst_cp[ck_index],
                                           "ReportType":"LCTT",
-                                          "ReportTermType": "1",
+                                          "ReportTermType": "2",
                                           "Unit": "1000000",
                                           "Page": str(page_number+1),
                                           "PageSize": "1"

@@ -14,23 +14,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f04fb-cb2e-41e2-8bcd-afc069b91e7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_giao_dich_khoi_ngoai.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_can_doi_ke_toan_quarter_spider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_chi_so_tai_chinh_yearly_spider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_yearly_spider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_quarter_spider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_yearly_spider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/merge_and_rename_cols.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_von_hoa_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_68/crawl_cp_68/spiders/try_tor.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_68/crawl_cp_68/spiders/try_tor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/config/ListStock.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/config/ListStock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_giao_dich_khoi_ngoai.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_giao_dich_khoi_ngoai.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_giao_dich.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_lich_su_giao_dich.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_thong_ke_dat_lenh.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/crawl_cp_cafef/spiders/cafef_thong_ke_dat_lenh.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_cafef/test_response/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_cafef/test_response/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_can_doi_ke_toan_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_can_doi_ke_toan_yearly_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_chi_tieu_ke_hoach_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_chi_tieu_ke_hoach_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_quarter_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_chi_so_tai_chinh_quarter_spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/config/ListStock.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/config/ListStock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_quarter_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_quarter_spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_yearly_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_ket_qua_kinh_doanh_yearly_spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_quarter_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_luu_chuyen_tien_te_quarter_spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_nhom_nganh_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders/finance_stock_nhom_nganh_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/collection_dump.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/collection_dump.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/merge_and_rename_cols.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/merge_and_rename_cols.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +64,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/crawl_cp_finance_stock/crawl_cp_finance_stock/spiders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -368,39 +366,44 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="118" y="198" width="537" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1299.741@67.27.1299.741" timestamp="1602148719545" />
-    <state x="449" y="145" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601895317149">
+    <state x="449" y="145" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602475420977">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="449" y="145" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1299.741@67.27.1299.741" timestamp="1601895317149" />
-    <state x="298" y="155" width="374" height="513" key="FileChooserDialogImpl" timestamp="1602228222718">
+    <state x="449" y="145" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1299.741@67.27.1299.741" timestamp="1602475420977" />
+    <state x="298" y="155" width="379" height="513" key="FileChooserDialogImpl" timestamp="1603810721451">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="500" y="155" width="495" height="484" key="FileChooserDialogImpl/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1598029549308" />
-    <state x="298" y="155" width="374" height="513" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1602228222718" />
+    <state x="298" y="155" width="379" height="513" key="FileChooserDialogImpl/67.27.1299.741/1366.0.1600.900@67.27.1299.741" timestamp="1602839159345" />
+    <state x="298" y="155" width="374" height="513" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1603810721451" />
     <state x="480" y="155" width="495" height="513" key="FileChooserDialogImpl/67.27.2323.741@67.27.2323.741" timestamp="1598499008191" />
-    <state width="1276" height="219" key="GridCell.Tab.0.bottom" timestamp="1602344650717">
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom" timestamp="1605795158392">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="219" key="GridCell.Tab.0.bottom/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
-    <state width="1276" height="219" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1602344650717" />
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1605795158392" />
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.1299.741/1366.0.1600.900@67.27.1299.741" timestamp="1602846718862" />
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1602476351843" />
     <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.2323.741@67.27.2323.741" timestamp="1598499009223" />
-    <state width="1276" height="219" key="GridCell.Tab.0.center" timestamp="1602344650716">
+    <state width="1276" height="175" key="GridCell.Tab.0.center" timestamp="1605795158392">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="219" key="GridCell.Tab.0.center/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
-    <state width="1276" height="219" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1602344650716" />
+    <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1605795158392" />
+    <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.1299.741/1366.0.1600.900@67.27.1299.741" timestamp="1602846718861" />
+    <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1602476351843" />
     <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.2323.741@67.27.2323.741" timestamp="1598499009222" />
-    <state width="1276" height="219" key="GridCell.Tab.0.left" timestamp="1602344650716">
+    <state width="1276" height="175" key="GridCell.Tab.0.left" timestamp="1605795158392">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="219" key="GridCell.Tab.0.left/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071770" />
-    <state width="1276" height="219" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1602344650716" />
+    <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1605795158392" />
+    <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.1299.741/1366.0.1600.900@67.27.1299.741" timestamp="1602846718861" />
+    <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1602476351843" />
     <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.2323.741@67.27.2323.741" timestamp="1598499009222" />
-    <state width="1276" height="219" key="GridCell.Tab.0.right" timestamp="1602344650717">
+    <state width="1276" height="175" key="GridCell.Tab.0.right" timestamp="1605795158392">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="219" key="GridCell.Tab.0.right/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071771" />
-    <state width="1276" height="219" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1602344650717" />
+    <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1605795158392" />
+    <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.1299.741/1366.0.1600.900@67.27.1299.741" timestamp="1602846718861" />
+    <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1602476351843" />
     <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.2323.741@67.27.2323.741" timestamp="1598499009223" />
     <state width="1276" height="219" key="GridCell.Tab.1.bottom" timestamp="1602344650718">
       <screen x="67" y="27" width="1299" height="741" />
@@ -422,10 +425,10 @@
     </state>
     <state width="1253" height="219" key="GridCell.Tab.1.right/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597329071772" />
     <state width="1276" height="219" key="GridCell.Tab.1.right/67.27.1299.741@67.27.1299.741" timestamp="1602344650718" />
-    <state x="67" y="27" width="1299" height="741" key="SettingsEditor" timestamp="1602005612182">
+    <state x="204" y="27" width="1299" height="741" key="SettingsEditor" timestamp="1605792972892">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="204" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597420057661" />
+    <state x="204" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1605792972892" />
     <state x="67" y="27" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1602005612182" />
     <state x="67" y="27" width="1299" height="741" key="SettingsEditor/67.27.2323.741@67.27.2323.741" timestamp="1598497702731" />
     <state x="330" y="46" width="762" height="700" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598497550224">
@@ -449,12 +452,13 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="380" y="175" key="run.anything.popup/67.27.1299.741@67.27.1299.741" timestamp="1602297812891" />
-    <state x="379" y="89" width="673" height="678" key="search.everywhere.popup" timestamp="1602339707731">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state x="763" y="100" width="1502" height="799" key="search.everywhere.popup" timestamp="1602823050510">
+      <screen x="67" y="27" width="2899" height="873" />
     </state>
     <state x="379" y="89" width="672" height="678" key="search.everywhere.popup/67.27.1299.741/1366.0.1024.768@67.27.1299.741" timestamp="1597379563296" />
     <state x="379" y="89" width="673" height="678" key="search.everywhere.popup/67.27.1299.741@67.27.1299.741" timestamp="1602339707731" />
     <state x="625" y="89" width="1202" height="678" key="search.everywhere.popup/67.27.2323.741@67.27.2323.741" timestamp="1598497871028" />
+    <state x="763" y="100" width="1502" height="799" key="search.everywhere.popup/67.27.2899.873@67.27.2899.873" timestamp="1602823050510" />
     <state x="441" y="288" width="540" height="216" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1602153585133">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -468,11 +472,6 @@
           <url>file://$PROJECT_DIR$/crawl_cp_68/spiders/category_home_spider.py</url>
           <line>18</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/utils/merge_and_rename_cols.py</url>
-          <line>2</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

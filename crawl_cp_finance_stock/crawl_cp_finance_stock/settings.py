@@ -58,6 +58,7 @@ SPLASH_COOKIES_DEBUG = False
 
 
 USER_AGENT_LIST = [
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
     'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.36 Safari/535.7',
     'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0) Gecko/16.0 Firefox/16.0',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) App leWebKit/534.55.3 (KHTML, like Gecko) '

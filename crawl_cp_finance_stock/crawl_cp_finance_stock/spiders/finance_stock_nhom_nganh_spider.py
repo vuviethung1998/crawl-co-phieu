@@ -26,7 +26,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
         language =  response.headers.getlist('Set-Cookie')[0].decode("utf-8").split(";")[0]
         ASP_sessionId = response.headers.getlist('Set-Cookie')[1].decode("utf-8").split(";")[0]
         verifyToken =  response.headers.getlist('Set-Cookie')[4].decode("utf-8").split(";")[0]
-        vts_usr_lg="93074A90D244461C383BBFE9EB4D475015C158ADC7C6CCF075E44C9654E4377A94F1A704C5F67B650E8482B3E1EB1612415557C39A61B6372E821969994DA7DDB46514ABCA15A3CB3C08F9EE9382AD7A28CF4E106308C2E4863C7A6D8A2F7D4FDD4B2A27DA32104F0D8F796836733F21AABC3D72BA8457746549A7EE8FA6F4A5451E03CC55A3703D2D55A40DB56E5D2E"
+        vts_usr_lg="77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30"
 
         page_number = response.meta['page_number']
 
@@ -42,14 +42,14 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                   "orderBy": "Code",
                                   "orderDir": "ASC",
                                   "page": str(page_number),
-                                  "pageSize": "20"
+                                  "pageSize": "100"
                               },
                               headers= {
                                   "X-Requested-With": "XMLHttpRequest",
                                   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                                   'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
                                   "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                  "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=93074A90D244461C383BBFE9EB4D475015C158ADC7C6CCF075E44C9654E4377A94F1A704C5F67B650E8482B3E1EB1612415557C39A61B6372E821969994DA7DDB46514ABCA15A3CB3C08F9EE9382AD7A28CF4E106308C2E4863C7A6D8A2F7D4FDD4B2A27DA32104F0D8F796836733F21AABC3D72BA8457746549A7EE8FA6F4A5451E03CC55A3703D2D55A40DB56E5D2E;"
+                                  "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30;"
                               },
                               meta= {
                                   "page_number": page_number,
@@ -88,7 +88,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
             obj["TotalShares"] = it["TotalShares"]
             yield  obj
 
-        if response.meta["page_number"] <= 160:
+        if response.meta["page_number"] <= 33:
             try:
                 yield FormRequest('https://finance.vietstock.vn/data/corporateaz',
                                       method="POST",
@@ -102,14 +102,14 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                           "orderBy": "Code",
                                           "orderDir": "ASC",
                                           "page":  str(page_number+1),
-                                          "pageSize": "20"
+                                          "pageSize": "100"
                                       },
                                       headers= {
                                           "X-Requested-With": "XMLHttpRequest",
                                           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                                           'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
                                           "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                          "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=93074A90D244461C383BBFE9EB4D475015C158ADC7C6CCF075E44C9654E4377A94F1A704C5F67B650E8482B3E1EB1612415557C39A61B6372E821969994DA7DDB46514ABCA15A3CB3C08F9EE9382AD7A28CF4E106308C2E4863C7A6D8A2F7D4FDD4B2A27DA32104F0D8F796836733F21AABC3D72BA8457746549A7EE8FA6F4A5451E03CC55A3703D2D55A40DB56E5D2E;"
+                                          "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30;"
                                       },
                                       meta= {
                                           "page_number": page_number+1,
@@ -117,7 +117,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                           "language": language,
                                           "ASP_sessionId": ASP_sessionId,
                                           "verifyToken": verifyToken,
-                                          "vts_usr_lg":"93074A90D244461C383BBFE9EB4D475015C158ADC7C6CCF075E44C9654E4377A94F1A704C5F67B650E8482B3E1EB1612415557C39A61B6372E821969994DA7DDB46514ABCA15A3CB3C08F9EE9382AD7A28CF4E106308C2E4863C7A6D8A2F7D4FDD4B2A27DA32104F0D8F796836733F21AABC3D72BA8457746549A7EE8FA6F4A5451E03CC55A3703D2D55A40DB56E5D2E"
+                                          "vts_usr_lg":"77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30"
                                       }
                                   )
             except:
@@ -136,14 +136,14 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                           "orderBy": "Code",
                                           "orderDir": "ASC",
                                           "page":  "1",
-                                          "pageSize": "20"
+                                          "pageSize": "100"
                                       },
                                       headers= {
                                           "X-Requested-With": "XMLHttpRequest",
                                           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                                           'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
                                           "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                          "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=93074A90D244461C383BBFE9EB4D475015C158ADC7C6CCF075E44C9654E4377A94F1A704C5F67B650E8482B3E1EB1612415557C39A61B6372E821969994DA7DDB46514ABCA15A3CB3C08F9EE9382AD7A28CF4E106308C2E4863C7A6D8A2F7D4FDD4B2A27DA32104F0D8F796836733F21AABC3D72BA8457746549A7EE8FA6F4A5451E03CC55A3703D2D55A40DB56E5D2E;"
+                                          "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30;"
                                       },
                                       meta= {
                                           "page_number": page_number+1,
@@ -151,7 +151,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                           "language": language,
                                           "ASP_sessionId": ASP_sessionId,
                                           "verifyToken": verifyToken,
-                                          "vts_usr_lg": "93074A90D244461C383BBFE9EB4D475015C158ADC7C6CCF075E44C9654E4377A94F1A704C5F67B650E8482B3E1EB1612415557C39A61B6372E821969994DA7DDB46514ABCA15A3CB3C08F9EE9382AD7A28CF4E106308C2E4863C7A6D8A2F7D4FDD4B2A27DA32104F0D8F796836733F21AABC3D72BA8457746549A7EE8FA6F4A5451E03CC55A3703D2D55A40DB56E5D2E"
+                                          "vts_usr_lg": "77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30"
                                       }
                                   )
             except:

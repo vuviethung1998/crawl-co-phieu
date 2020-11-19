@@ -117,7 +117,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
 
         # quay lai parse
 
-        if response.meta["page_number"] <= 120:
+        if response.meta["page_number"] <= 2:
             try:
                 yield Request('https://s.cafef.vn/Lich-su-giao-dich-VIC-2.chn',
                                   method="POST",

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
 import scrapy
-import requests as r
 
 class TryTorSpider(scrapy.Spider):
     name = 'try_tor'
