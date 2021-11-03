@@ -12,7 +12,8 @@ class FinanceStockChiSoTaiChinhYearlySpider(CrawlSpider):
         super(FinanceStockChiSoTaiChinhYearlySpider, self).__init__(**kwargs)
         self.allowed_domains = ['finance.vietstock.vn']
 
-        self.lst_cp =  HOSE + HNX
+        #  HOSE + HNX +
+        self.lst_cp = UPCOM
 
         self.start_urls = ['https://finance.vietstock.vn']
         settings['CRAWLER_COLLECTION'] = 'CAN_DOI_KE_TOAN_YEARLY'

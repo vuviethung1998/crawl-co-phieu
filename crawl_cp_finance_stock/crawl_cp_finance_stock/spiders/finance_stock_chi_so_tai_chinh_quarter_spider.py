@@ -12,7 +12,8 @@ class FinanceStockChiSoTaiChinhQuarterSpider(CrawlSpider):
         super(FinanceStockChiSoTaiChinhQuarterSpider, self).__init__(**kwargs)
         self.allowed_domains = ['finance.vietstock.vn']
 
-        self.lst_cp =  HOSE + HNX
+        # HOSE + HNX +
+        self.lst_cp = UPCOM
 
         self.start_urls = ['https://finance.vietstock.vn']
         settings['CRAWLER_COLLECTION'] = "CHI_SO_TAI_CHINH_QUARTER"

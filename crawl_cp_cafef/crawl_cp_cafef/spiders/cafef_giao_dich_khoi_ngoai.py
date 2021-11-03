@@ -13,7 +13,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
         super(CafefLichSuGiaoDichSpider, self).__init__(**kwargs)
         self.allowed_domains = ['cafef.vn']
 
-        self.lst_cp = HOSE + HNX
+        self.lst_cp = HOSE + HNX + UPCOM
 
         self.start_urls = ['https://s.cafef.vn']
         settings['CRAWLER_COLLECTION'] = 'GIAO_DICH_KHOI_NGOAI'
@@ -26,8 +26,8 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
             })
 
     def parse(self, response):
-        ASP_sessionId = response.headers.getlist('Set-Cookie')[0].decode("utf-8").split(";")[0]
-        print(ASP_sessionId)
+        # ASP_sessionId = response.headers.getlist('Set-Cookie')[0].decode("utf-8").split(";")[0]
+        # print(ASP_sessionId)
         ck_index = response.meta["ck_index"]
         page_number = response.meta['page_number']
         print(self.lst_cp[ck_index])
@@ -37,26 +37,26 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
         yield Request('https://s.cafef.vn/Lich-su-giao-dich-VIC-3.chn',
                           method="POST",
                           callback= self.parse_giao_dich_khoi_ngoai,
-                          body="ctl00%24ContentPlaceHolder1%24scriptmanager=ctl00%24ContentPlaceHolder1%24ctl03%24panelAjax%7Cctl00%24ContentPlaceHolder1%24ctl03%24pager1&ctl00%24ContentPlaceHolder1%24ctl03%24txtKeyword={}&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate1%24txtDatePicker=&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate2%24txtDatePicker=&ctl00%24UcFooter2%24hdIP=&__EVENTTARGET=ctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTARGUMENT={}&__VIEWSTATE=%2FwEPDwUKMTU2NzY0ODUyMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY3RsMDMkYnRTZWFyY2jJnyPYjjwDsOatyCQBZar0ZSQygQ%3D%3D&__VIEWSTATEGENERATOR=2E2252AF&__ASYNCPOST=true&".format(self.lst_cp[ck_index], page_number),
+                          body="ctl00%24ContentPlaceHolder1%24scriptmanager=ctl00%24ContentPlaceHolder1%24ctl03%24panelAjax%7Cctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTTARGET=ctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTARGUMENT={}&__VIEWSTATE=%2FwEPDwUKMTU2NzY0ODUyMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY3RsMDMkYnRTZWFyY2jJnyPYjjwDsOatyCQBZar0ZSQygQ%3D%3D&ctl00%24ContentPlaceHolder1%24ctl03%24txtKeyword={}&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate1%24txtDatePicker=&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate2%24txtDatePicker=&ctl00%24UcFooter2%24hdIP=&__VIEWSTATEGENERATOR=2E2252AF&__ASYNCPOST=true&".format(page_number, self.lst_cp[ck_index]),
                           headers= {
                               "X-Requested-With": "XMLHttpRequest",
                               "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                               'Accept-Language': 'vi,en-US;q=0.9,en;q=0.8',
                               "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                              "Cookie":  ASP_sessionId,
+                              # "Cookie":  ASP_sessionId,
                               "X-MicrosoftAjax": "Delta=true"
                           },
                           meta= {
                               "ck_name": self.lst_cp[ck_index],
                               "ck_index": ck_index,
                               "page_number": page_number,
-                              "ASP_sessionId": ASP_sessionId
+                              # "ASP_sessionId": ASP_sessionId
                           }
                       )
 
 
     def parse_giao_dich_khoi_ngoai(self, response):
-        ASP_sessionId = response.meta["ASP_sessionId"]
+        # ASP_sessionId = response.meta["ASP_sessionId"]
         ck_index =  response.meta["ck_index"]
         page_number = response.meta["page_number"]
 
@@ -67,6 +67,12 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
             if start > 1:
                 data = {}
                 data['Chung_khoan_name'] = self.lst_cp[ck_index]
+                if self.lst_cp[ck_index] in HOSE:
+                    data['San Chung Khoan'] = 'HOSE'
+                elif self.lst_cp[ck_index] in HNX:
+                    data['San Chung Khoan'] = 'HNX'
+                else:
+                    data['San Chung Khoan'] = 'UPCOM'
                 for i, td in enumerate(tr.find_all('td', recursive=False)):
                     if i % 10 == 0:
                         data['Ngày'] =  td.text.replace(u'\xa0', u'')
@@ -77,7 +83,7 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
                             data['KL Giao Dịch Ròng Khối Ngoại'] =   0
                     elif i % 10 == 2:
                         try:
-                            data['KL Giao Dịch Ròng Khối Ngoại'] =   int(td.text.replace(u'\xa0', u'').replace(',', ''))
+                            data['GT Giao Dịch Ròng Khối Ngoại'] =   int(td.text.replace(u'\xa0', u'').replace(',', ''))
                         except:
                             data['GT Giao Dịch Ròng Khối Ngoại'] = 0
                     elif i % 10 == 3:
@@ -122,25 +128,25 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
 
         # quay lai parse
 
-        if response.meta["page_number"] <= 2:
+        if response.meta["page_number"] <= 10:
             try:
                 yield Request('https://s.cafef.vn/Lich-su-giao-dich-VIC-3.chn',
                                   method="POST",
                                   callback= self.parse_giao_dich_khoi_ngoai,
-                                  body="ctl00%24ContentPlaceHolder1%24scriptmanager=ctl00%24ContentPlaceHolder1%24ctl03%24panelAjax%7Cctl00%24ContentPlaceHolder1%24ctl03%24pager1&ctl00%24ContentPlaceHolder1%24ctl03%24txtKeyword={}&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate1%24txtDatePicker=&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate2%24txtDatePicker=&ctl00%24UcFooter2%24hdIP=&__EVENTTARGET=ctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTARGUMENT={}&__VIEWSTATE=%2FwEPDwUKMTU2NzY0ODUyMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY3RsMDMkYnRTZWFyY2jJnyPYjjwDsOatyCQBZar0ZSQygQ%3D%3D&__VIEWSTATEGENERATOR=2E2252AF&__ASYNCPOST=true&".format(self.lst_cp[ck_index], page_number+1),
+                                  body="ctl00%24ContentPlaceHolder1%24scriptmanager=ctl00%24ContentPlaceHolder1%24ctl03%24panelAjax%7Cctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTTARGET=ctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTARGUMENT={}&__VIEWSTATE=%2FwEPDwUKMTU2NzY0ODUyMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY3RsMDMkYnRTZWFyY2jJnyPYjjwDsOatyCQBZar0ZSQygQ%3D%3D&ctl00%24ContentPlaceHolder1%24ctl03%24txtKeyword={}&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate1%24txtDatePicker=&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate2%24txtDatePicker=&ctl00%24UcFooter2%24hdIP=&__VIEWSTATEGENERATOR=2E2252AF&__ASYNCPOST=true&".format(page_number+1, self.lst_cp[ck_index]),
                                   headers= {
                                       "X-Requested-With": "XMLHttpRequest",
                                       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                                       'Accept-Language': 'vi,en-US;q=0.9,en;q=0.8',
                                       "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                      "Cookie":  ASP_sessionId,
+                                      # "Cookie":  ASP_sessionId,
                                       "X-MicrosoftAjax": "Delta=true"
                                   },
                                   meta= {
                                       "ck_name": self.lst_cp[ck_index],
                                       "ck_index": ck_index,
                                       "page_number": page_number+1,
-                                      "ASP_sessionId": ASP_sessionId
+                                      # "ASP_sessionId": ASP_sessionId
                                   }
                               )
 
@@ -152,20 +158,20 @@ class CafefLichSuGiaoDichSpider(CrawlSpider):
                 yield Request('https://s.cafef.vn/Lich-su-giao-dich-VIC-3.chn',
                                   method="POST",
                                   callback= self.parse_giao_dich_khoi_ngoai,
-                                  body="ctl00%24ContentPlaceHolder1%24scriptmanager=ctl00%24ContentPlaceHolder1%24ctl03%24panelAjax%7Cctl00%24ContentPlaceHolder1%24ctl03%24pager1&ctl00%24ContentPlaceHolder1%24ctl03%24txtKeyword={}&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate1%24txtDatePicker=&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate2%24txtDatePicker=&ctl00%24UcFooter2%24hdIP=&__EVENTTARGET=ctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTARGUMENT={}&__VIEWSTATE=%2FwEPDwUKMTU2NzY0ODUyMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY3RsMDMkYnRTZWFyY2jJnyPYjjwDsOatyCQBZar0ZSQygQ%3D%3D&__VIEWSTATEGENERATOR=2E2252AF&__ASYNCPOST=true&".format(self.lst_cp[ck_index+1], 1),
+                                  body="ctl00%24ContentPlaceHolder1%24scriptmanager=ctl00%24ContentPlaceHolder1%24ctl03%24panelAjax%7Cctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTTARGET=ctl00%24ContentPlaceHolder1%24ctl03%24pager1&__EVENTARGUMENT={}&__VIEWSTATE=%2FwEPDwUKMTU2NzY0ODUyMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY3RsMDMkYnRTZWFyY2jJnyPYjjwDsOatyCQBZar0ZSQygQ%3D%3D&ctl00%24ContentPlaceHolder1%24ctl03%24txtKeyword={}&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate1%24txtDatePicker=&ctl00%24ContentPlaceHolder1%24ctl03%24dpkTradeDate2%24txtDatePicker=&ctl00%24UcFooter2%24hdIP=&__VIEWSTATEGENERATOR=2E2252AF&__ASYNCPOST=true&".format(1, self.lst_cp[ck_index+1]),
                                   headers= {
                                       "X-Requested-With": "XMLHttpRequest",
                                       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                                       'Accept-Language': 'vi,en-US;q=0.9,en;q=0.8',
                                       "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                      "Cookie":  ASP_sessionId,
+                                      # "Cookie":  ASP_sessionId,
                                       "X-MicrosoftAjax": "Delta=true"
                                   },
                                   meta= {
                                       "ck_name": self.lst_cp[ck_index+1],
                                       "ck_index": ck_index+1,
                                       "page_number": 1,
-                                      "ASP_sessionId": ASP_sessionId
+                                      # "ASP_sessionId": ASP_sessionId
                                   }
                               )
             except:

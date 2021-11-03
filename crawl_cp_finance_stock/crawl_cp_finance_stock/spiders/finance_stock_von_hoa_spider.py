@@ -11,7 +11,7 @@ class FinanceStockVonHoaThiTruongSpider(CrawlSpider):
     def __init__(self, **kwargs):
         super(FinanceStockVonHoaThiTruongSpider, self).__init__(**kwargs)
         self.allowed_domains = ['finance.vietstock.vn']
-        self.lst_cp =  HOSE + HNX
+        self.lst_cp =  HOSE + HNX + UPCOM
         self.start_urls = ['https://finance.vietstock.vn']
         settings['CRAWLER_COLLECTION'] = "VON_HOA_THI_TRUONG"
 

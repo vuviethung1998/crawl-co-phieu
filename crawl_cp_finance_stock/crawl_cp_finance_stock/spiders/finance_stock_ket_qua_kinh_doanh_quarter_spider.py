@@ -12,7 +12,7 @@ class FinanceStockKetQuaKinhDoanhQuarterSpider(CrawlSpider):
         super(FinanceStockKetQuaKinhDoanhQuarterSpider, self).__init__(**kwargs)
         self.allowed_domains = ['finance.vietstock.vn']
 
-        self.lst_cp =  HOSE + HNX
+        self.lst_cp =  HOSE + HNX + UPCOM
 
         self.start_urls = ['https://finance.vietstock.vn']
         settings['CRAWLER_COLLECTION'] = "KET_QUA_KINH_DOANH_QUARTER"

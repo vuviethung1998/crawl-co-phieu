@@ -26,7 +26,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
         language =  response.headers.getlist('Set-Cookie')[0].decode("utf-8").split(";")[0]
         ASP_sessionId = response.headers.getlist('Set-Cookie')[1].decode("utf-8").split(";")[0]
         verifyToken =  response.headers.getlist('Set-Cookie')[4].decode("utf-8").split(";")[0]
-        vts_usr_lg="77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30"
+        vts_usr_lg="25D50954A6867904662F0ADCCB0A07EC40673FD525967167788F119BFDC80751185C7B0B0F82A5F1AF77DDDD67F165C9DFD64D7E63EC7B478F4789FC47436901499764F120C1A36115D7D9CA6327E1D7A565C2C5CB788F86ACAF8E1F6A227F0EEA810A835E5A522DB1E080FE6DA53C7E2809CE0AFBF22313B120251676C9D9EBFFB9B46C6C628A4EB40CFF4B1FAF8759"
 
         page_number = response.meta['page_number']
 
@@ -49,7 +49,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                                   'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
                                   "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                  "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30;"
+                                  "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg={};".format(vts_usr_lg)
                               },
                               meta= {
                                   "page_number": page_number,
@@ -109,7 +109,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                                           'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
                                           "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                          "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30;"
+                                          "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId={}; __RequestVerificationToken={}; vts_usr_lg={};".format(ASP_sessionId, verifyToken,vts_usr_lg)
                                       },
                                       meta= {
                                           "page_number": page_number+1,
@@ -117,7 +117,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                           "language": language,
                                           "ASP_sessionId": ASP_sessionId,
                                           "verifyToken": verifyToken,
-                                          "vts_usr_lg":"77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30"
+                                          "vts_usr_lg" : vts_usr_lg
                                       }
                                   )
             except:
@@ -143,7 +143,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                                           'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
                                           "User-Agent":  random.choice(settings.get('USER_AGENT_LIST')),
-                                          "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId=rywvhzyai4ffxqkne4crvlje; __RequestVerificationToken=cC6zL47mdjaUyeLGF-VH3hAI-gdTK92KyZ1bwwWNdCmfDjhG9x0vetRKFqePiHHtYRloTdynYukg_XZNO0cc25_L8jYkN2aDOsGJpyr2sRo1; vts_usr_lg=77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30;"
+                                          "Cookie": "language=vi-VN; isShowLogin=true;  ASP.NET_SessionId={}; __RequestVerificationToken={}; vts_usr_lg={};".format(ASP_sessionId, verifyToken,vts_usr_lg)
                                       },
                                       meta= {
                                           "page_number": page_number+1,
@@ -151,7 +151,7 @@ class FinanceStockNhomNganhSpider(CrawlSpider):
                                           "language": language,
                                           "ASP_sessionId": ASP_sessionId,
                                           "verifyToken": verifyToken,
-                                          "vts_usr_lg": "77361D345F93AEA2C62B58C5DEBB8F2CD2D924A26F6CAA591F2712AA9F26EFF8BF1073ECEE48B612FD86204B088DDF2DBC42352C6E73304FA2C9F51A4C6039A5F687CCDFFF27A8C8D7FF838DFE5F47C53C23BFE4CB634DB6551B494BE5C6F39CD3722DC1EF98331090E8036EE3A48B42312E68031DEC8E51671155FAD33CBFFB1648928A0F110A7F6D0F43FC75570F30"
+                                          "vts_usr_lg": vts_usr_lg
                                       }
                                   )
             except:

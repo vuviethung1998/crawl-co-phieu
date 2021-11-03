@@ -23,6 +23,10 @@ class MongoDBPipeline(object):
         self.collection = db.database[settings['CRAWLER_COLLECTION']]
 
     def process_item(self, item, spider):
-        self.collection.insert(item)
+        # check item da ton tai chua
+        if self.collection.count_documents({  'Chung_khoan_name': item['Chung_khoan_name']}, limit = 1):
+            print('Item existed!')
+        else:
+            self.collection.insert(item)
         return item
 
